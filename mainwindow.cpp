@@ -3,6 +3,8 @@
 #include <QTextBrowser>
 #include <QTextBlock>
 #include <QMessageBox>
+#include <QTimer>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -10,17 +12,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("DENAS PRODUCT");
-    resize(700,550);
-    pal.setColor(QPalette::Background, Qt::gray);
+
+    pal.setColor(QPalette::Background, Qt::white);
     setAutoFillBackground(true);
     setPalette(pal);
+    setMouseTracking(true);
 
-    ui->Back->resize(80,25);
-    ui->Top->resize(80,25);
-    ui->Down->resize(80,25);
-    ui->Open->resize(80,25);
-    ui->Off->resize(80,25);
-    ui->Screen->resize(250,200);
+
+    //connect(ui->Back,SIGNAL(clicked(bool)),this,SLOT(on_Back_clicked()));
+
 
 }
 
@@ -43,13 +43,30 @@ void MainWindow::on_Open_clicked()
     ui->Screen->append("Use Case5");
     ui->Screen->append("Use Case6");
 
+
 }
 
 
 void MainWindow::on_Off_clicked()
 {
-    QApplication* e;
-     e->exit(0);
+    ui->Screen->clear();
+    //QApplication* e;
+     //e->exit(0);
 
 
 }
+
+void MainWindow::on_Back_clicked()
+{
+    form = new Form();
+    form->show();
+}
+
+void MainWindow::on_Set_clicked()
+{
+    set = new Setting();
+    set->show();
+}
+
+
+
