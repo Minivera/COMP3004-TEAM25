@@ -10,3 +10,12 @@ jobs:
 
     steps:
       - run: qmake -makefile && make
+
+  test:
+    docker:
+      - image: buildpack-deps:trusty
+
+    working_directory: ~/
+
+    steps:
+      - run: qmake -makefile && make check
