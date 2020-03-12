@@ -17,13 +17,11 @@ jobs:
 
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 18.06.0-ce
       - run: sudo apt-get update && sudo apt-get install -y libxkbcommon-x11-0
       - run: qmake Team25.pro
       - run: make qmake_all
       - run: cd ./tests && make
-      - run: ./tests/tests --platform offscree
+      - run: ./tests/tests --platform offscreen
 
 workflows:
   version: 2
