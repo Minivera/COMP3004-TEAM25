@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - checkout
-      - run: qmake -makefile
+      - run: qmake -makefile tests/tests.pro
       - run: make check
 
 workflows:
