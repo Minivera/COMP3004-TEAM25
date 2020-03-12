@@ -19,3 +19,10 @@ jobs:
       - checkout
       - run: qmake -makefile
       - run: make check
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test
