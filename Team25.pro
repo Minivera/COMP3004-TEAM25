@@ -28,13 +28,11 @@ SOURCES += \
         form.cpp \
         main.cpp \
         mainwindow.cpp \
-        power_level.cpp \
         setting.cpp
 
 HEADERS += \
         form.h \
         mainwindow.h \
-        power_level.h \
         setting.h
 
 FORMS += \
