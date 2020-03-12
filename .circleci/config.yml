@@ -7,6 +7,7 @@ jobs:
       - image: buildpack-deps:trusty
 
     steps:
+      - run: source /opt/qt55/bin/qt55-env.sh
       - run: /opt/qt54/bin/qmake -makefile && make
 
   test:
