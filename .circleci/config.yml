@@ -6,16 +6,12 @@ jobs:
     docker:
       - image: buildpack-deps:trusty
 
-    working_directory: ~/
-
     steps:
-      - run: qmake -makefile && make
+      - run: /opt/qt54/bin/qmake -makefile && make
 
   test:
     docker:
       - image: buildpack-deps:trusty
 
-    working_directory: ~/
-
     steps:
-      - run: qmake -makefile && make check
+      - run: /opt/qt54/bin/qmake -makefile && make check
