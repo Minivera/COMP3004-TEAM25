@@ -4,16 +4,9 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: ubuntu-1604:201903-01
+      - image: rabits/qt
 
     steps:
-      - run: ls /opt && ls /opt/qt55 && /opt/qt55/bin
-      - run: source /opt/qt55/bin/qt55-env.sh
-      - run: /opt/qt54/bin/qmake -makefile && make
-
-  test:
-    docker:
-      - image: ubuntu-1604:201903-01
-
-    steps:
-      - run: /opt/qt54/bin/qmake -makefile && make check
+      - checkout
+      - run: cd COMP3004-TEAM25
+      - run: qmake -makefile && make
