@@ -48,8 +48,5 @@ void MainWindow::on_Open_clicked()
 
 void MainWindow::on_Off_clicked()
 {
-    QApplication* e;
-     e->exit(0);
-
-
+    QApplication::instance()->exit(0);
 }
