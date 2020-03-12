@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: rabits/qt
+      - image: rabits/qt:5.13-desktop
 
     steps:
       - checkout
