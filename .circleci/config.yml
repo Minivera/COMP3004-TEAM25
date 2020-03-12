@@ -20,7 +20,7 @@ jobs:
       - run: sudo apt-get install libx11-xcb-dev libglu1-mesa-dev build-dependencies
       - run: qmake Team25.pro -spec linux-g++
       - run: make qmake_all
-      - run: make check
+      - run: QT_DEBUG_PLUGINS=1 make check
 
 workflows:
   version: 2
