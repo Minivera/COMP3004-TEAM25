@@ -8,5 +8,5 @@ jobs:
 
     steps:
       - checkout
-      - run: cd COMP3004-TEAM25
-      - run: qmake -makefile && make
+      - run: qmake -makefile
+      - run: make
