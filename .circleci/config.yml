@@ -19,10 +19,6 @@ jobs:
       - checkout
       - run: qmake Team25.pro -spec linux-g++
       - run: make qmake_all
-      - run: cd app/ && qmake -o Makefile app.pro -spec linux-g++
-      - run: cd app/ && make -f Makefile qmake_all
-      - run: cd test/ && qmake -o Makefile test.pro -spec linux-g++
-      - run: cd test/ && make -f Makefile qmake_all
       - run: make check
 
 workflows:
