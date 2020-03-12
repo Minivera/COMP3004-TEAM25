@@ -19,7 +19,7 @@ void MainWindowTest::on_Open_clicked()
     MainWindow window;
 
     // Act
-    window.show();
+    //window.show();
 
     QTest::mouseClick(window.ui->Open, Qt::LeftButton);
 
