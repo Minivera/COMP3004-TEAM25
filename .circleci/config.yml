@@ -13,8 +13,6 @@ jobs:
 
   test:
     machine:
-      environment:
-        QMAKE: "/opt/qt54/bin/qmake"
       image: ubuntu-1604:201903-01
 
     steps:
@@ -22,6 +20,7 @@ jobs:
       - run: sudo add-apt-repository -y ppa:beineri/opt-qt551-trusty
       - run: sudo apt-get update
       - run: sudo apt-get install qt55base qt55webkit
+      - run: echo 'source /opt/qt55/bin/qt55-env.sh' >> ${CIRCLECI_HOME}/.circlerc
       - checkout
       - run: qmake Team25.pro
       - run: make qmake_all
