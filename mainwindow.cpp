@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     Timer->start(10000);
     //connect(ui->Back,SIGNAL(clicked(bool)),this,SLOT(on_Back_clicked()));
     QObject::connect(Timer,SIGNAL(timeout()),this,SLOT(T()));
+     ui->Battery->hide();
 
 
 
@@ -40,6 +41,7 @@ void MainWindow::on_Open_clicked()
         ui->Screen->clear();
     }
     ui->Screen->document()->setMaximumBlockCount(100);
+    ui->Battery->show();
 
     ui->Screen->append("mode 1");
     ui->Screen->append("mode 2");
@@ -80,6 +82,7 @@ void MainWindow::on_Set_clicked()
 
 void MainWindow::T()
 {
+
     const int R = ui->Battery->text().toInt();
     ui->Battery->setText(QString::number(R-1));
 }
