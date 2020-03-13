@@ -11,6 +11,7 @@ class MainWindowTest: public QObject
 private slots:
     void on_Open_clicked();
     void on_Off_clicked();
+
 };
 
 void MainWindowTest::on_Open_clicked()
