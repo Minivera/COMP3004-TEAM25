@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>778</width>
-    <height>495</height>
+    <width>241</width>
+    <height>509</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QTextBrowser" name="Screen">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>0</x>
       <y>0</y>
-      <width>256</width>
+      <width>241</width>
       <height>192</height>
      </rect>
     </property>
@@ -27,23 +27,23 @@
    <widget class="QPushButton" name="Back">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>230</y>
-      <width>83</width>
-      <height>25</height>
+      <x>0</x>
+      <y>220</y>
+      <width>51</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Back</string>
+     <string>Enter</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Open">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>360</y>
-      <width>83</width>
-      <height>25</height>
+      <x>80</x>
+      <y>300</y>
+      <width>51</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -53,10 +53,10 @@
    <widget class="QPushButton" name="Off">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>360</y>
-      <width>83</width>
-      <height>25</height>
+      <x>80</x>
+      <y>410</y>
+      <width>51</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -66,36 +66,70 @@
    <widget class="QPushButton" name="Top">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>230</y>
-      <width>83</width>
-      <height>25</height>
+      <x>80</x>
+      <y>250</y>
+      <width>51</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Top</string>
+     <string>↑</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Down">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>360</y>
-      <width>83</width>
+      <x>80</x>
+      <y>350</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>↓</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Set">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>220</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Setting</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Battery">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>0</y>
+      <width>31</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Down</string>
+     <string>100</string>
     </property>
    </widget>
+   <zorder>Open</zorder>
+   <zorder>Screen</zorder>
+   <zorder>Back</zorder>
+   <zorder>Off</zorder>
+   <zorder>Top</zorder>
+   <zorder>Down</zorder>
+   <zorder>Set</zorder>
+   <zorder>Battery</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>778</width>
+     <width>241</width>
      <height>22</height>
     </rect>
    </property>
