@@ -3,6 +3,10 @@
 #include <QTextBrowser>
 #include <QTextBlock>
 #include <QMessageBox>
+#include <QTimer>
+
+#define TIMER_TIMEOUT   (5*1000)
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -10,18 +14,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("DENAS PRODUCT");
-    resize(700,550);
-    pal.setColor(QPalette::Background, Qt::gray);
+
+    pal.setColor(QPalette::Background, Qt::white);
     setAutoFillBackground(true);
     setPalette(pal);
-
-    ui->Back->resize(80,25);
-    ui->Top->resize(80,25);
-    ui->Down->resize(80,25);
-    ui->Open->resize(80,25);
-    ui->Off->resize(80,25);
-    ui->Screen->resize(250,200);
-
+    setMouseTracking(true);
+    Timer=new QTimer(this);
+    Timer->start(10000);
+    //connect(ui->Back,SIGNAL(clicked(bool)),this,SLOT(on_Back_clicked()));
+    QObject::connect(Timer,SIGNAL(timeout()),this,SLOT(T()));
+     ui->Battery->hide();
 }
 
 MainWindow::~MainWindow()
@@ -36,17 +38,35 @@ void MainWindow::on_Open_clicked()
         ui->Screen->clear();
     }
     ui->Screen->document()->setMaximumBlockCount(100);
-    ui->Screen->append("Use Case1");
-    ui->Screen->append("Use Case2");
-    ui->Screen->append("Use Case3");
-    ui->Screen->append("Use Case4");
-    ui->Screen->append("Use Case5");
-    ui->Screen->append("Use Case6");
+    ui->Battery->show();
 
+    ui->Screen->append("mode 1");
+    ui->Screen->append("mode 2");
+    ui->Screen->append("mode 3");
 }
 
 
 void MainWindow::on_Off_clicked()
 {
-    QApplication::instance()->exit(0);
+    ui->Screen->clear();
+    ui->Battery->setText(" ");
+}
+
+void MainWindow::on_Back_clicked()
+{
+    form = new Form();
+    form->show();
+}
+
+void MainWindow::on_Set_clicked()
+{
+    set = new Setting();
+    set->show();
+}
+
+
+void MainWindow::T()
+{
+    const int R = ui->Battery->text().toInt();
+    ui->Battery->setText(QString::number(R-1));
 }
