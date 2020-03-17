@@ -11,6 +11,8 @@ class Form : public QDialog
 {
     Q_OBJECT
 
+    friend class FormTest;
+
 public:
     explicit Form(QWidget *parent = nullptr);
     ~Form();

@@ -46,8 +46,6 @@ void MainWindowTest::on_Off_clicked()
 void MainWindowTest::on_Back_clicked()
 {
     // Arrange
-    //int argc = 0;
-    //QApplication app(argc, nullptr);
     MainWindow window;
 
     // Act
@@ -74,7 +72,5 @@ void MainWindowTest::on_Set_clicked()
     QCOMPARE(setting.isEmpty(), false);
     QCOMPARE(setting.at(0)->objectName(), "Setting");
 }
-
-QTEST_MAIN(MainWindowTest)
 
 #include "tst_mainwindow.moc"

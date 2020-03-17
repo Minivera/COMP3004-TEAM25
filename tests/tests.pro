@@ -17,7 +17,10 @@ SOURCES +=  \
     ../app/mainwindow.cpp \
     ../app/form.cpp \
     ../app/setting.cpp \
-    tst_mainwindow.cpp
+    main.cpp \
+    tst_form.cpp \
+    tst_mainwindow.cpp \
+    tst_setting.cpp
 
 FORMS += \
     ../app/mainwindow.ui \

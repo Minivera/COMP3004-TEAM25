@@ -11,6 +11,8 @@ class Setting : public QDialog
 {
     Q_OBJECT
 
+    friend class SettingTest;
+
 public:
     explicit Setting(QWidget *parent = nullptr);
     ~Setting();
