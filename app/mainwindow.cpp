@@ -45,7 +45,6 @@ void MainWindow::on_Open_clicked()
     ui->Screen->append("mode 3");
 }
 
-
 void MainWindow::on_Off_clicked()
 {
     ui->Screen->clear();
@@ -54,16 +53,15 @@ void MainWindow::on_Off_clicked()
 
 void MainWindow::on_Back_clicked()
 {
-    form = new Form();
+    form = new Form(this);
     form->show();
 }
 
 void MainWindow::on_Set_clicked()
 {
-    set = new Setting();
+    set = new Setting(this);
     set->show();
 }
-
 
 void MainWindow::T()
 {

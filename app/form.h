@@ -1,13 +1,13 @@
 #ifndef FORM_H
 #define FORM_H
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class Form;
 }
 
-class Form : public QWidget
+class Form : public QDialog
 {
     Q_OBJECT
 
