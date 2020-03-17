@@ -11,7 +11,10 @@ INCLUDEPATH += \
 HEADERS += \
     ../app/mainwindow.h \
     ../app/form.h \
-    ../app/setting.h
+    ../app/setting.h \
+    tst_form.h \
+    tst_mainwindow.h \
+    tst_setting.h
 
 SOURCES +=  \
     ../app/mainwindow.cpp \

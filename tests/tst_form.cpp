@@ -1,18 +1,4 @@
-#include <QtTest>
-#include <QPushButton>
-
-#include "form.h"
-#include "ui_form.h"
-
-class FormTest: public QObject
-{
-    Q_OBJECT
-
-private slots:
-    void on_Menu_clicked();
-    void on_Reduce_clicked();
-    void on_Add_clicked();
-};
+#include "tst_form.h"
 
 void FormTest::on_Menu_clicked()
 {
@@ -52,5 +38,3 @@ void FormTest::on_Add_clicked()
     // Assert
     QCOMPARE(window.ui->Level->text().toInt(), 1);
 }
-
-#include "tst_form.moc"

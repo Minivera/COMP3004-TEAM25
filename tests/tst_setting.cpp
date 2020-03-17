@@ -1,20 +1,4 @@
-#include <QtTest>
-#include <QPushButton>
-
-#include "setting.h"
-#include "ui_setting.h"
-
-class SettingTest: public QObject
-{
-    Q_OBJECT
-
-private slots:
-    void on_Back_clicked();
-    void on_Reduce_clicked();
-    void on_Add_clicked();
-    void on_Decrease_clicked();
-    void on_Increase_clicked();
-};
+#include "tst_setting.h"
 
 void SettingTest::on_Back_clicked()
 {
@@ -80,5 +64,3 @@ void SettingTest::on_Increase_clicked()
     // Assert
     QCOMPARE(window.ui->Light->text().toInt(), 1);
 }
-
-#include "tst_setting.moc"

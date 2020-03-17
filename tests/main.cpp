@@ -1,9 +1,9 @@
 #include <QtTest>
 #include <QApplication>
 
-#include "tst_mainwindow.cpp"
-#include "tst_form.cpp"
-#include "tst_setting.cpp"
+#include "tst_mainwindow.h"
+#include "tst_form.h"
+#include "tst_setting.h"
 
 int main(int argc, char *argv[])
 {

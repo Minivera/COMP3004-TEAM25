@@ -1,21 +1,4 @@
-#include <QtTest>
-#include <QPushButton>
-
-#include "mainwindow.h"
-#include "form.h"
-#include "setting.h"
-#include "ui_mainwindow.h"
-
-class MainWindowTest: public QObject
-{
-    Q_OBJECT
-
-private slots:
-    void on_Open_clicked();
-    void on_Off_clicked();
-    void on_Back_clicked();
-    void on_Set_clicked();
-};
+#include "tst_mainwindow.h"
 
 void MainWindowTest::on_Open_clicked()
 {
@@ -72,5 +55,3 @@ void MainWindowTest::on_Set_clicked()
     QCOMPARE(setting.isEmpty(), false);
     QCOMPARE(setting.at(0)->objectName(), "Setting");
 }
-
-#include "tst_mainwindow.moc"
