@@ -52,7 +52,7 @@ void SettingTest::on_Add_clicked()
     QTest::mouseClick(window.ui->Add, Qt::LeftButton);
 
     // Assert
-    QCOMPARE(window.ui->Volice->text().toInt(), -1);
+    QCOMPARE(window.ui->Volice->text().toInt(), 1);
 }
 
 void SettingTest::on_Decrease_clicked()
@@ -78,7 +78,7 @@ void SettingTest::on_Increase_clicked()
     QTest::mouseClick(window.ui->Increase, Qt::LeftButton);
 
     // Assert
-    QCOMPARE(window.ui->Light->text().toInt(), -1);
+    QCOMPARE(window.ui->Light->text().toInt(), 1);
 }
 
 #include "tst_setting.moc"
