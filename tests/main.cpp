@@ -9,10 +9,9 @@ int main(int argc, char *argv[])
 {
     // setup lambda
     int status = 0;
-    auto runTest = [&status, argc, argv](QObject* obj) {
-        int appArgc = argc;
-        QApplication app(appArgc, argv);
+    QApplication app(argc, argv);
 
+    auto runTest = [&status, argc, argv](QObject* obj) {
         status |= QTest::qExec(obj, argc, argv);
     };
 
