@@ -1,18 +1,4 @@
-#include <QtTest>
-#include <QPushButton>
-
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-
-class MainWindowTest: public QObject
-{
-    Q_OBJECT
-
-private slots:
-    void on_Open_clicked();
-    void on_Off_clicked();
-
-};
+#include "tst_mainwindow.h"
 
 void MainWindowTest::on_Open_clicked()
 {
@@ -20,8 +6,6 @@ void MainWindowTest::on_Open_clicked()
     MainWindow window;
 
     // Act
-    //window.show();
-
     QTest::mouseClick(window.ui->Open, Qt::LeftButton);
 
     // Assert
@@ -35,8 +19,6 @@ void MainWindowTest::on_Off_clicked()
     MainWindow window;
 
     // Act
-    //window.show();
-
     QTest::mouseClick(window.ui->Open, Qt::LeftButton);
     QTest::mouseClick(window.ui->Off, Qt::LeftButton);
 
@@ -44,6 +26,32 @@ void MainWindowTest::on_Off_clicked()
     QCOMPARE(window.ui->Screen->document()->isEmpty(), true);
 }
 
-QTEST_MAIN(MainWindowTest)
+void MainWindowTest::on_Back_clicked()
+{
+    // Arrange
+    MainWindow window;
 
-#include "tst_mainwindow.moc"
+    // Act
+    QTest::mouseClick(window.ui->Back, Qt::LeftButton);
+
+    auto form = window.findChildren<Form*>();
+
+    // Assert
+    QCOMPARE(form.isEmpty(), false);
+    QCOMPARE(form.at(0)->objectName(), "Form");
+}
+
+void MainWindowTest::on_Set_clicked()
+{
+    // Arrange
+    MainWindow window;
+
+    // Act
+    QTest::mouseClick(window.ui->Set, Qt::LeftButton);
+
+    auto setting = window.findChildren<Setting*>();
+
+    // Assert
+    QCOMPARE(setting.isEmpty(), false);
+    QCOMPARE(setting.at(0)->objectName(), "Setting");
+}
