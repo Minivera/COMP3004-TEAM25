@@ -10,11 +10,13 @@
 #include <stdio.h>
 
 Form::Form(QWidget *parent) :
-    QDialog(parent),
+    QWidget(parent),
     ui(new Ui::Form)
 {
     ui->setupUi(this);
     this->setWindowTitle("Level Form");
+
+
 }
 
 Form::~Form()
@@ -26,19 +28,29 @@ Form::~Form()
 void Form::on_Menu_clicked()
 {
     this->hide();
+
+
 }
 
 void Form::on_Reduce_clicked()
 {
+
     const int R = ui->Level->text().toInt();
     ui->Level->setText(QString::number(R-1));
+
+
 }
 
 
 void Form::on_Add_clicked()
 {
+
+
     const int R = ui->Level->text().toInt();
     ui->Level->setText(QString::number(R+1));
+
+
+
 }
 
 void Form::on_Enter_clicked()

@@ -1,17 +1,15 @@
 #ifndef SETTING_H
 #define SETTING_H
 
-#include <QDialog>
+#include <QWidget>
 
 namespace Ui {
 class Setting;
 }
 
-class Setting : public QDialog
+class Setting : public QWidget
 {
     Q_OBJECT
-
-    friend class SettingTest;
 
 public:
     explicit Setting(QWidget *parent = nullptr);
