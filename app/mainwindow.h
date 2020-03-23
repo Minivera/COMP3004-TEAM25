@@ -15,12 +15,11 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+    friend class MainWindowTest;
+
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
-
-
 
 private slots:
 
@@ -40,8 +39,6 @@ private:
     Setting *set;
 
    QTimer *Timer;
-
-
 };
 
 #endif // MAINWINDOW_H
