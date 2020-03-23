@@ -21,6 +21,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
+
+
 private slots:
 
     void on_Off_clicked();
@@ -28,6 +31,8 @@ private slots:
     void on_Back_clicked();
     void on_Set_clicked();
     void T();
+    void on_Top_clicked();
+    void on_Down_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -37,6 +42,8 @@ private:
     Setting *set;
 
    QTimer *Timer;
+
+
 };
 
 #endif // MAINWINDOW_H

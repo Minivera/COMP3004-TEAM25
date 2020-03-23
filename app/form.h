@@ -2,6 +2,8 @@
 #define FORM_H
 
 #include <QDialog>
+#include "timer.h"
+
 
 namespace Ui {
 class Form;
@@ -19,12 +21,14 @@ public:
 
 private:
     Ui::Form *ui;
+    Timer *timer;
 
 
 private slots:
     void on_Menu_clicked();
     void on_Reduce_clicked();
     void on_Add_clicked();
+    void on_Enter_clicked();
 
 };
 

@@ -10,7 +10,7 @@ void MainWindowTest::on_Open_clicked()
 
     // Assert
     QCOMPARE(window.ui->Screen->document()->isEmpty(), false);
-    QCOMPARE(window.ui->Screen->document()->toPlainText(), "mode 1\nmode 2\nmode 3");
+    QCOMPARE(window.ui->Screen->document()->toPlainText(), "ALLERGY\nPAIN\nINT.PAIN");
 }
 
 void MainWindowTest::on_Off_clicked()

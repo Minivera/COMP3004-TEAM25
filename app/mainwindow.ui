@@ -29,12 +29,12 @@
      <rect>
       <x>0</x>
       <y>220</y>
-      <width>51</width>
+      <width>71</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Enter</string>
+     <string>ALLERGY</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Open">
@@ -54,7 +54,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>410</y>
+      <y>360</y>
       <width>51</width>
       <height>41</height>
      </rect>
@@ -67,33 +67,33 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>250</y>
-      <width>51</width>
+      <y>220</y>
+      <width>71</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>↑</string>
+     <string>PAIN</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Down">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>350</y>
-      <width>51</width>
+      <x>160</x>
+      <y>220</y>
+      <width>71</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>↓</string>
+     <string>INT.PAIN</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Set">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>220</y>
+      <x>180</x>
+      <y>300</y>
       <width>51</width>
       <height>41</height>
      </rect>

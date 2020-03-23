@@ -24,6 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
     //connect(ui->Back,SIGNAL(clicked(bool)),this,SLOT(on_Back_clicked()));
     QObject::connect(Timer,SIGNAL(timeout()),this,SLOT(T()));
      ui->Battery->hide();
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -40,15 +43,28 @@ void MainWindow::on_Open_clicked()
     ui->Screen->document()->setMaximumBlockCount(100);
     ui->Battery->show();
 
-    ui->Screen->append("mode 1");
-    ui->Screen->append("mode 2");
-    ui->Screen->append("mode 3");
+    ui->Screen->append("ALLERGY");
+    ui->Screen->append("PAIN");
+    ui->Screen->append("INT.PAIN");
+
+
+    //ui->Battery->setText("99");
+
+
+
+
+
 }
+
 
 void MainWindow::on_Off_clicked()
 {
     ui->Screen->clear();
     ui->Battery->setText(" ");
+    //QApplication* e;
+     //e->exit(0);
+
+
 }
 
 void MainWindow::on_Back_clicked()
@@ -63,8 +79,25 @@ void MainWindow::on_Set_clicked()
     set->show();
 }
 
+
 void MainWindow::T()
 {
+
     const int R = ui->Battery->text().toInt();
     ui->Battery->setText(QString::number(R-1));
+}
+
+
+
+void MainWindow::on_Top_clicked()
+{
+    form = new Form(this);
+    form->show();
+}
+
+
+void MainWindow::on_Down_clicked()
+{
+    form = new Form(this);
+    form->show();
 }
