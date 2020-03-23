@@ -29,6 +29,8 @@ private slots:
     void on_Back_clicked();
     void on_Set_clicked();
     void T();
+    void on_Top_clicked();
+    void on_Down_clicked();
 
 private:
     Ui::MainWindow *ui;

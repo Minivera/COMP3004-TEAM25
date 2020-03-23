@@ -52,3 +52,16 @@ void Form::on_Add_clicked()
 
 
 }
+
+void Form::on_Enter_clicked()
+{
+
+
+    timer = new Timer();
+    timer->show();
+
+
+
+
+}
+

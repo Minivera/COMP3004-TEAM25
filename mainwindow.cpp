@@ -43,9 +43,9 @@ void MainWindow::on_Open_clicked()
     ui->Screen->document()->setMaximumBlockCount(100);
     ui->Battery->show();
 
-    ui->Screen->append("mode 1");
-    ui->Screen->append("mode 2");
-    ui->Screen->append("mode 3");
+    ui->Screen->append("ALLERGY");
+    ui->Screen->append("PAIN");
+    ui->Screen->append("INT.PAIN");
 
 
     //ui->Battery->setText("99");
@@ -85,4 +85,19 @@ void MainWindow::T()
 
     const int R = ui->Battery->text().toInt();
     ui->Battery->setText(QString::number(R-1));
+}
+
+
+
+void MainWindow::on_Top_clicked()
+{
+    form = new Form();
+    form->show();
+}
+
+
+void MainWindow::on_Down_clicked()
+{
+    form = new Form();
+    form->show();
 }

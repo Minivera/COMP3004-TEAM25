@@ -28,17 +28,20 @@ SOURCES += \
         form.cpp \
         main.cpp \
         mainwindow.cpp \
-        setting.cpp
+        setting.cpp \
+        timer.cpp
 
 HEADERS += \
         form.h \
         mainwindow.h \
-        setting.h
+        setting.h \
+        timer.h
 
 FORMS += \
         form.ui \
         mainwindow.ui \
-        setting.ui
+        setting.ui \
+        timer.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
