@@ -1,7 +1,7 @@
 #ifndef FORM_H
 #define FORM_H
 
-#include <QWidget>
+#include <QDialog>
 #include "timer.h"
 
 
@@ -9,9 +9,11 @@ namespace Ui {
 class Form;
 }
 
-class Form : public QWidget
+class Form : public QDialog
 {
     Q_OBJECT
+
+    friend class FormTest;
 
 public:
     explicit Form(QWidget *parent = nullptr);

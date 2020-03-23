@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 Form::Form(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::Form)
 {
     ui->setupUi(this);
