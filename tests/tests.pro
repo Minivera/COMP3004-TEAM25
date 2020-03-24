@@ -15,7 +15,8 @@ HEADERS += \
     ../app/timer.h \
     tst_form.h \
     tst_mainwindow.h \
-    tst_setting.h
+    tst_setting.h \
+    tst_timer.h
 
 SOURCES +=  \
     ../app/mainwindow.cpp \
@@ -25,7 +26,8 @@ SOURCES +=  \
     main.cpp \
     tst_form.cpp \
     tst_mainwindow.cpp \
-    tst_setting.cpp
+    tst_setting.cpp \
+    tst_timer.cpp
 
 FORMS += \
     ../app/mainwindow.ui \

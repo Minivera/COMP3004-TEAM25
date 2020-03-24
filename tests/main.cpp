@@ -4,6 +4,7 @@
 #include "tst_mainwindow.h"
 #include "tst_form.h"
 #include "tst_setting.h"
+#include "tst_timer.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
     runTest(new MainWindowTest);
     runTest(new FormTest);
     runTest(new SettingTest);
+    runTest(new TimerTest);
 
     return status;
 }
