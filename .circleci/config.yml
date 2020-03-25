@@ -1,0 +1,31 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: rabits/qt:5.13-desktop
+
+    steps:
+      - checkout
+      - run: qmake -makefile
+      - run: make
+
+  test:
+    docker:
+      - image: rabits/qt:5.13-desktop
+
+    steps:
+      - checkout
+      - run: sudo apt-get update && sudo apt-get install -y libxkbcommon-x11-0
+      - run: qmake Team25.pro
+      - run: make qmake_all
+      - run: cd ./tests && make
+      - run: ./tests/tests --platform offscreen
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test

@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 Form::Form(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::Form)
 {
     ui->setupUi(this);
@@ -52,3 +52,16 @@ void Form::on_Add_clicked()
 
 
 }
+
+void Form::on_Enter_clicked()
+{
+
+
+    timer = new Timer();
+    timer->show();
+
+
+
+
+}
+
