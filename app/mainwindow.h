@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "form.h"
+#include "form_2.h"
+#include "form_3.h"
 #include "setting.h"
 #include <QObject>
 
@@ -14,6 +16,8 @@ class QLCDNumber;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
+    friend class MainWindowTest;
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
@@ -37,6 +41,8 @@ private:
     QPalette pal;
     //int row = 0;
     Form *form;
+    Form_2 *form_2;
+    Form_3 *form_3;
     Setting *set;
 
    QTimer *Timer;

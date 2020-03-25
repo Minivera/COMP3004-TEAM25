@@ -26,22 +26,33 @@ CONFIG += c++11
 
 SOURCES += \
         form.cpp \
+        form_2.cpp \
+        form_3.cpp \
         main.cpp \
         mainwindow.cpp \
         setting.cpp \
-        timer.cpp
+        timer.cpp \
+        timer_2.cpp \
+        timer_3.cpp
 
 HEADERS += \
         form.h \
+        form_2.h \
+        form_3.h \
         mainwindow.h \
         setting.h \
-        timer.h
+        timer.h \
+        timer_2.h \
+        timer_3.h
 
 FORMS += \
-        form.ui \
+        form_2.ui \
+        form_3.ui \
         mainwindow.ui \
         setting.ui \
-        timer.ui
+        timer.ui \
+        timer_2.ui \
+        timer_3.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,5 +1,5 @@
-#include "form.h"
-#include "ui_form.h"
+#include "form_3.h"
+#include "ui_form_3.h"
 #include "mainwindow.h"
 #include <QTextBrowser>
 #include <QTextBlock>
@@ -9,30 +9,27 @@
 #define printf qDebug
 #include <stdio.h>
 
-Form::Form(QWidget *parent) :
+Form_3::Form_3(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Form)
+    ui(new Ui::Form_3)
 {
     ui->setupUi(this);
     this->setWindowTitle("Level Form");
-
-
 }
 
-Form::~Form()
+Form_3::~Form_3()
 {
     delete ui;
 }
 
-
-void Form::on_Menu_clicked()
+void Form_3::on_Menu_clicked()
 {
     this->hide();
 
 
 }
 
-void Form::on_Reduce_clicked()
+void Form_3::on_Reduce_clicked()
 {
 
     const int R = ui->Level->text().toInt();
@@ -42,7 +39,7 @@ void Form::on_Reduce_clicked()
 }
 
 
-void Form::on_Add_clicked()
+void Form_3::on_Add_clicked()
 {
 
 
@@ -53,15 +50,14 @@ void Form::on_Add_clicked()
 
 }
 
-void Form::on_Enter_clicked()
+void Form_3::on_Enter_clicked()
 {
 
 
-    timer = new Timer();
+    timer = new Timer_3();
     timer->show();
 
 
 
 
 }
-
