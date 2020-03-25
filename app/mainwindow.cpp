@@ -91,13 +91,17 @@ void MainWindow::T()
 
 void MainWindow::on_Top_clicked()
 {
+
     form_2 = new Form_2(this);
     form_2->show();
+
 }
 
 
 void MainWindow::on_Down_clicked()
 {
+
     form_3 = new Form_3(this);
     form_3->show();
+
 }
