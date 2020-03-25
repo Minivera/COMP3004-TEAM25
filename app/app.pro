@@ -46,6 +46,7 @@ HEADERS += \
         timer_3.h
 
 FORMS += \
+        form.ui \
         form_2.ui \
         form_3.ui \
         mainwindow.ui \
