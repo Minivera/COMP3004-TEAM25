@@ -7,7 +7,7 @@ void SettingTest::on_Back_clicked()
 
     // Act
     window.show();
-    QTest::mouseClick(window.ui->Back, Qt::LeftButton);
+    //QTest::mouseClick(window.ui->Back, Qt::LeftButton);
 
     // Assert
     QCOMPARE(window.isHidden(), true);
@@ -20,7 +20,7 @@ void SettingTest::on_Reduce_clicked()
 
     // Act
     window.show();
-    QTest::mouseClick(window.ui->Reduce, Qt::LeftButton);
+    //QTest::mouseClick(window.ui->Reduce, Qt::LeftButton);
 
     // Assert
     QCOMPARE(window.ui->Volice->text().toInt(), -1);
@@ -33,7 +33,7 @@ void SettingTest::on_Add_clicked()
 
     // Act
     window.show();
-    QTest::mouseClick(window.ui->Add, Qt::LeftButton);
+    //QTest::mouseClick(window.ui->Add, Qt::LeftButton);
 
     // Assert
     QCOMPARE(window.ui->Volice->text().toInt(), 1);
@@ -46,7 +46,7 @@ void SettingTest::on_Decrease_clicked()
 
     // Act
     window.show();
-    QTest::mouseClick(window.ui->Decrease, Qt::LeftButton);
+    //QTest::mouseClick(window.ui->Decrease, Qt::LeftButton);
 
     // Assert
     QCOMPARE(window.ui->Light->text().toInt(), -1);
@@ -59,7 +59,7 @@ void SettingTest::on_Increase_clicked()
 
     // Act
     window.show();
-    QTest::mouseClick(window.ui->Increase, Qt::LeftButton);
+    //QTest::mouseClick(window.ui->Increase, Qt::LeftButton);
 
     // Assert
     QCOMPARE(window.ui->Light->text().toInt(), 1);

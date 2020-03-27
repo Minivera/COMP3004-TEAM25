@@ -1,11 +1,18 @@
-#include "mainwindow.h"
 #include <QApplication>
+
+#include "mainwindow.h"
+#include "appmodel.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+
+    AppModel* model = new AppModel();
+    MainWindow w(model);
     w.show();
 
-    return a.exec();
+    int returnCode = a.exec();
+
+    delete model;
+    return returnCode;
 }

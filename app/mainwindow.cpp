@@ -8,100 +8,117 @@
 #define TIMER_TIMEOUT   (5*1000)
 
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(AppModel* model, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    this->model = model;
+    QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(on_Update_requested()));
+
     ui->setupUi(this);
     this->setWindowTitle("DENAS PRODUCT");
+
+    set = new Setting(this);
+    set->hide();
+    form = new Form(model, this);
+    form->hide();
+    timer = new Timer(model, this);
+    timer->hide();
 
     pal.setColor(QPalette::Background, Qt::white);
     setAutoFillBackground(true);
     setPalette(pal);
     setMouseTracking(true);
-    Timer=new QTimer(this);
-    Timer->start(10000);
-    //connect(ui->Back,SIGNAL(clicked(bool)),this,SLOT(on_Back_clicked()));
-    QObject::connect(Timer,SIGNAL(timeout()),this,SLOT(T()));
-     ui->Battery->hide();
 
-
-
+    ui->battery->hide();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete set;
+    delete form;
+    delete timer;
 }
 
-void MainWindow::on_Open_clicked()
-{
-    if (ui->Screen->document()->blockCount() > 100)
-    {
-        ui->Screen->clear();
+void MainWindow::update() {
+    ui->battery->setText(QString::number(model->getBatteryTime()));
+    if (model->isOn()) {
+        set->hide();
+        form->hide();
+        timer->hide();
+        ui->mainView->show();
+        ui->battery->show();
+    } else {
+        ui->battery->hide();
+        set->hide();
+        form->hide();
+        timer->hide();
+        ui->mainView->hide();
+        return;
     }
-    ui->Screen->document()->setMaximumBlockCount(100);
-    ui->Battery->show();
 
-    ui->Screen->append("ALLERGY");
-    ui->Screen->append("PAIN");
-    ui->Screen->append("INT.PAIN");
+    if (model->getSelectedMenu() == currentMenu::Settings) {
+        set->show();
+        form->hide();
+        timer->hide();
+        ui->mainView->hide();
+    } else if (model->getSelectedMenu() == currentMenu::Form) {
+        set->hide();
+        form->show();
+        timer->hide();
+        ui->mainView->hide();
+    } else if (model->getSelectedMenu() == currentMenu::Timer) {
+        set->hide();
+        form->hide();
+        timer->show();
+        ui->mainView->hide();
+    } else {
+        set->hide();
+        form->hide();
+        timer->hide();
+        ui->mainView->show();
+    }
 
-
-    //ui->Battery->setText("99");
-
-
-
-
-
+    ui->mainView->setModel(model->getListViewMenuModel());
+    ui->mainView->setCurrentIndex(model->getSelectedItem());
 }
 
-
-void MainWindow::on_Off_clicked()
+void MainWindow::on_onButton_clicked()
 {
-    ui->Screen->clear();
-    ui->Battery->setText(" ");
-    //QApplication* e;
-     //e->exit(0);
-
-
+    model->isOn() ? model->powerOff() : model->powerOn();
 }
 
-void MainWindow::on_Back_clicked()
+void MainWindow::on_backButton_clicked()
 {
-    form = new Form(this);
-    form->show();
+    model->handleBack();
 }
 
-void MainWindow::on_Set_clicked()
-{
-    set = new Setting(this);
-    set->show();
+void MainWindow::on_Update_requested() {
+    update();
 }
 
-
-void MainWindow::T()
+void MainWindow::on_upButton_clicked()
 {
-
-    const int R = ui->Battery->text().toInt();
-    ui->Battery->setText(QString::number(R-1));
+    model->handleTop();
 }
 
-
-
-void MainWindow::on_Top_clicked()
+void MainWindow::on_bottomButton_clicked()
 {
-
-    form_2 = new Form_2(this);
-    form_2->show();
-
+    model->handleBottom();
 }
 
-
-void MainWindow::on_Down_clicked()
+void MainWindow::on_enterButton_clicked()
 {
+    model->handleEnter();
+}
 
-    form_3 = new Form_3(this);
-    form_3->show();
+void MainWindow::on_leftButton_clicked()
+{
+    model->handleLeft();
+}
 
+void MainWindow::on_rightButton_clicked()
+{
+    model->handleRight();
 }
