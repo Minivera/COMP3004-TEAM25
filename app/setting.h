@@ -21,6 +21,7 @@ private:
     Ui::Setting *ui;
 
 private slots:
+    //Five private slots in setting
     void on_Back_clicked();
     void on_Reduce_clicked();
     void on_Add_clicked();

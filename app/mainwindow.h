@@ -27,6 +27,7 @@ public:
 
 
 private slots:
+    //Seven private slots in mainwindow
 
     void on_Off_clicked();
     void on_Open_clicked();
@@ -37,6 +38,7 @@ private slots:
     void on_Down_clicked();
 
 private:
+    //Six private value in mainwindow
     Ui::MainWindow *ui;
     QPalette pal;
     //int row = 0;

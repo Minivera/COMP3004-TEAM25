@@ -20,11 +20,13 @@ public:
     ~Form();
 
 private:
+//two private value
     Ui::Form *ui;
     Timer *timer;
 
 
 private slots:
+//four private slot in form to connect four button
     void on_Menu_clicked();
     void on_Reduce_clicked();
     void on_Add_clicked();

@@ -15,10 +15,12 @@ public:
     explicit Timer_3(QWidget *parent = nullptr);
     ~Timer_3();
 private slots:
+    //One private slots in setting
 
     void A();
 
 private:
+    //One private value in mainwindow
     Ui::Timer_3 *ui;
     QTimer *timer200;
 };

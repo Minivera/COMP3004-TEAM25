@@ -13,6 +13,7 @@ Setting::Setting(QWidget *parent) :
     ui(new Ui::Setting)
 {
     ui->setupUi(this);
+     //Set page name
     this->setWindowTitle("Setting Form");
 
 }

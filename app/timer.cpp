@@ -11,7 +11,9 @@ Timer::Timer(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->setupUi(this);
+     //Set page name
     this->setWindowTitle("Time Form");
+    //Seting speed
     timer200  =new QTimer(this);
     timer200->start(1000);
 

@@ -18,10 +18,11 @@ public:
     ~Timer();
 
 private slots:
-
+    //One private slots in setting
     void A();
 
 private:
+    //One private value in mainwindow
     Ui::Timer *ui;
     QTimer *timer200;
 };

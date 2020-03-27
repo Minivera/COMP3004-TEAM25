@@ -17,10 +17,12 @@ public:
     ~Form_3();
 
 private:
+    /* two private value*/
     Ui::Form_3 *ui;
     Timer_3 *timer;
 
 private slots:
+    /*four private slot in form to connect four button*/
     void on_Menu_clicked();
     void on_Reduce_clicked();
     void on_Add_clicked();
