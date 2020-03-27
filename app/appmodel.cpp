@@ -122,11 +122,19 @@ void AppModel::handleEnter() {
 void AppModel::Timer_changed() {
     batteryLeft -= 1;
 
+    if (batteryLeft <= 0) {
+        batteryTimer->stop();
+    }
+
     emit valueChanged();
 }
 
 void AppModel::TreatmentTimer_changed() {
     treatmentLeft -= 1;
+
+    if (treatmentLeft <= 0) {
+        treatmentTimer->stop();
+    }
 
     emit valueChanged();
 }

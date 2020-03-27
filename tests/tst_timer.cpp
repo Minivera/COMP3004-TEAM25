@@ -1,15 +1,24 @@
 #include "tst_timer.h"
 
-void TimerTest::A()
+void TimerTest::on_Update_requested()
 {
-    /*// Arrange
-    Timer window;
+    // Arrange
+    AppModel model;
+    Timer widget(&model);
 
     // Act
-    window.show();
-    QSignalSpy spy(window.timer200, SIGNAL(timeout()));
+    widget.show();
+    // Enter programs mode
+    model.handleEnter();
+    // Enter first program mode
+    model.handleEnter();
+
+    QSignalSpy spy(widget.model, SIGNAL(valueChanged()));
+
+    // Enter timer
+    model.handleEnter();
 
     // Assert
     QCOMPARE(spy.isValid(), true);
-    QVERIFY(spy.wait());*/
+    QVERIFY(spy.wait());
 }

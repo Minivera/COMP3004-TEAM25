@@ -1,57 +1,116 @@
 #include "tst_mainwindow.h"
 
-void MainWindowTest::on_Open_clicked()
-{
+void MainWindowTest::on_onButton_clicked() {
     // Arrange
-    /*MainWindow window;
+    AppModel model;
+    MainWindow window(&model);
 
     // Act
-    QTest::mouseClick(window.ui->Open, Qt::LeftButton);
+    window.show();
+    QTest::mouseClick(window.ui->onButton, Qt::LeftButton);
 
     // Assert
-    QCOMPARE(window.ui->Screen->document()->isEmpty(), false);
-    QCOMPARE(window.ui->Screen->document()->toPlainText(), "ALLERGY\nPAIN\nINT.PAIN");*/
+    QCOMPARE(model.isOn(), true);
 }
 
-void MainWindowTest::on_Off_clicked()
-{
+void MainWindowTest::on_backButton_clicked() {
     // Arrange
-    /*MainWindow window;
+    AppModel model;
+    MainWindow window(&model);
 
     // Act
-    QTest::mouseClick(window.ui->Open, Qt::LeftButton);
-    QTest::mouseClick(window.ui->Off, Qt::LeftButton);
+    window.show();
+    QTest::mouseClick(window.ui->onButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+
+    QCOMPARE(model.getSelectedMenu(), currentMenu::ProgramsMenu);
+
+    QTest::mouseClick(window.ui->backButton, Qt::LeftButton);
 
     // Assert
-    QCOMPARE(window.ui->Screen->document()->isEmpty(), true);*/
+    QCOMPARE(model.getSelectedMenu(), currentMenu::MainMenu);
 }
 
-void MainWindowTest::on_Back_clicked()
-{
+void MainWindowTest::on_upButton_clicked(){
     // Arrange
-    /*MainWindow window;
+    AppModel model;
+    MainWindow window(&model);
 
     // Act
-    QTest::mouseClick(window.ui->Back, Qt::LeftButton);
-
-    auto form = window.findChildren<Form*>();
+    window.show();
+    QTest::mouseClick(window.ui->onButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->bottomButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->upButton, Qt::LeftButton);
 
     // Assert
-    QCOMPARE(form.isEmpty(), false);
-    QCOMPARE(form.at(0)->objectName(), "Form");*/
+    QCOMPARE(model.getSelectedItem().row(), 0);
 }
 
-void MainWindowTest::on_Set_clicked()
-{
+void MainWindowTest::on_bottomButton_clicked() {
     // Arrange
-    /*MainWindow window;
+    AppModel model;
+    MainWindow window(&model);
 
     // Act
-    QTest::mouseClick(window.ui->Set, Qt::LeftButton);
-
-    auto setting = window.findChildren<Setting*>();
+    window.show();
+    QTest::mouseClick(window.ui->onButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->bottomButton, Qt::LeftButton);
 
     // Assert
-    QCOMPARE(setting.isEmpty(), false);
-    QCOMPARE(setting.at(0)->objectName(), "Setting");*/
+    QCOMPARE(model.getSelectedItem().row(), 1);
+
+}
+
+void MainWindowTest::on_leftButton_clicked() {
+    // Arrange
+    AppModel model;
+    MainWindow window(&model);
+
+    // Act
+    window.show();
+
+    // Go to the form
+    QTest::mouseClick(window.ui->onButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+
+    // Update the frequency
+    QTest::mouseClick(window.ui->leftButton, Qt::LeftButton);
+
+    // Assert
+    QCOMPARE(model.getFrequency(), 0);
+}
+
+void MainWindowTest::on_rightButton_clicked() {
+    // Arrange
+    AppModel model;
+    MainWindow window(&model);
+
+    // Act
+    window.show();
+
+    // Go to the form
+    QTest::mouseClick(window.ui->onButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+
+    // Update the frequency
+    QTest::mouseClick(window.ui->rightButton, Qt::LeftButton);
+
+    // Assert
+    QCOMPARE(model.getFrequency(), 2);
+}
+
+void MainWindowTest::on_enterButton_clicked() {
+    // Arrange
+    AppModel model;
+    MainWindow window(&model);
+
+    // Act
+    window.show();
+    QTest::mouseClick(window.ui->onButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+
+    // Assert
+    QCOMPARE(model.getSelectedMenu(), currentMenu::ProgramsMenu);
 }

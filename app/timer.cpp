@@ -13,6 +13,8 @@ Timer::Timer(AppModel* model, QWidget *parent) :
 
     ui->setupUi(this);
     QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(on_Update_requested()));
+
+    ui->successLabel->hide();
 }
 
 Timer::~Timer()
@@ -22,6 +24,10 @@ Timer::~Timer()
 
 void Timer::update() {
     ui->timerScreen->setText(QString::number(model->getTreatmentTime()));
+
+    if (model->getTreatmentTime() <= 0) {
+        ui->successLabel->show();
+    }
 }
 
 void Timer::on_Update_requested() {
