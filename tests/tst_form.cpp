@@ -1,5 +1,7 @@
 #include "tst_form.h"
 
+#include "timer.h"
+
 void FormTest::on_Menu_clicked()
 {
     // Arrange
@@ -37,4 +39,20 @@ void FormTest::on_Add_clicked()
 
     // Assert
     QCOMPARE(window.ui->Level->text().toInt(), 1);
+}
+
+void FormTest::on_Enter_clicked()
+{
+    // Arrange
+    Form window;
+
+    // Act
+    window.show();
+    QTest::mouseClick(window.ui->Enter, Qt::LeftButton);
+
+    auto form = window.findChildren<Timer*>();
+
+    // Assert
+    QCOMPARE(form.isEmpty(), false);
+    QCOMPARE(form.at(0)->objectName(), "Timer");
 }

@@ -15,8 +15,6 @@ Form::Form(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Level Form");
-
-
 }
 
 Form::~Form()
@@ -28,40 +26,23 @@ Form::~Form()
 void Form::on_Menu_clicked()
 {
     this->hide();
-
-
 }
 
 void Form::on_Reduce_clicked()
 {
-
     const int R = ui->Level->text().toInt();
     ui->Level->setText(QString::number(R-1));
-
-
 }
-
 
 void Form::on_Add_clicked()
 {
-
-
     const int R = ui->Level->text().toInt();
     ui->Level->setText(QString::number(R+1));
-
-
-
 }
 
 void Form::on_Enter_clicked()
 {
-
-
-    timer = new Timer();
+    timer = new Timer(this);
     timer->show();
-
-
-
-
 }
 
