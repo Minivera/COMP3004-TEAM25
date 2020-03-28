@@ -21,6 +21,7 @@ private:
     Ui::Setting *ui;
 
 private slots:
+     // Slots for the different buttons.
     void on_Back_clicked();
     void on_Reduce_clicked();
     void on_Add_clicked();

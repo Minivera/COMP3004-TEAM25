@@ -25,7 +25,7 @@ private slots:
 
 private:
     Ui::Timer *ui;
-
+    //transfer model data
     AppModel* model;
 
     void update();
