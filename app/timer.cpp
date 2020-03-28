@@ -5,17 +5,16 @@
 #include <QMessageBox>
 #include <QTimer>
 
-Timer::Timer(QWidget *parent) :
-    QDialog(parent),
+Timer::Timer(AppModel* model, QWidget *parent) :
+    QWidget(parent),
     ui(new Ui::Timer)
 {
-    ui->setupUi(this);
-    ui->setupUi(this);
-    this->setWindowTitle("Time Form");
-    timer200  =new QTimer(this);
-    timer200->start(1000);
+    this->model = model;
 
-    QObject::connect(timer200, SIGNAL(timeout()), this, SLOT(A()));
+    ui->setupUi(this);
+    QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(on_Update_requested()));
+
+    ui->successLabel->hide();
 }
 
 Timer::~Timer()
@@ -23,11 +22,14 @@ Timer::~Timer()
     delete ui;
 }
 
+void Timer::update() {
+    ui->timerScreen->setText(QString::number(model->getTreatmentTime()));
 
-void Timer::A()
-{
-    const int R = ui->Time->text().toInt();
-    ui->Time->setText(QString::number(R+1));
+    if (model->getTreatmentTime() <= 0) {
+        ui->successLabel->show();
+    }
 }
 
-
+void Timer::on_Update_requested() {
+    update();
+}

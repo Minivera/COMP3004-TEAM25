@@ -12,10 +12,7 @@ class FormTest: public QObject
     Q_OBJECT
 
 private slots:
-    void on_Menu_clicked();
-    void on_Reduce_clicked();
-    void on_Add_clicked();
-    void on_Enter_clicked();
+    void on_Update_requested();
 };
 
 #endif // TST_FORM_H

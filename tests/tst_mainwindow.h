@@ -14,10 +14,13 @@ class MainWindowTest: public QObject
     Q_OBJECT
 
 private slots:
-    void on_Open_clicked();
-    void on_Off_clicked();
-    void on_Back_clicked();
-    void on_Set_clicked();
+    void on_onButton_clicked();
+    void on_backButton_clicked();
+    void on_upButton_clicked();
+    void on_bottomButton_clicked();
+    void on_leftButton_clicked();
+    void on_rightButton_clicked();
+    void on_enterButton_clicked();
 };
 
 #endif // TST_MAINWINDOW_H
