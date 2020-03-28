@@ -2,17 +2,18 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "form.h"
-#include "form_2.h"
-#include "form_3.h"
-#include "setting.h"
 #include <QObject>
 
+#include "appmodel.h"
+#include "form.h"
+#include "timer.h"
+#include "setting.h"
 
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 class QLCDNumber;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -20,36 +21,38 @@ class MainWindow : public QMainWindow
     friend class MainWindowTest;
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(AppModel* model, QWidget *parent = nullptr);
     ~MainWindow();
 
-
-
-
 private slots:
-    //Seven private slots in mainwindow
+    // On and back buttons
+    void on_onButton_clicked();
+    void on_backButton_clicked();
 
-    void on_Off_clicked();
-    void on_Open_clicked();
-    void on_Back_clicked();
-    void on_Set_clicked();
-    void T();
-    void on_Top_clicked();
-    void on_Down_clicked();
+    // Slot to connect to the model udpate message
+    void on_Update_requested();
+
+    // Slots for the direction buttons.
+    void on_upButton_clicked();
+    void on_bottomButton_clicked();
+    void on_leftButton_clicked();
+    void on_rightButton_clicked();
+
+    // Slot for the enter button
+    void on_enterButton_clicked();
 
 private:
-    //Six private value in mainwindow
     Ui::MainWindow *ui;
     QPalette pal;
-    //int row = 0;
+
+    // The model containing all the data for the application.
+    AppModel* model;
+
     Form *form;
-    Form_2 *form_2;
-    Form_3 *form_3;
+    Timer *timer;
     Setting *set;
 
-   QTimer *Timer;
-
-
+    void update();
 };
 
 #endif // MAINWINDOW_H

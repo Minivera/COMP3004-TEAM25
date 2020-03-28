@@ -1,58 +1,22 @@
 #include "tst_form.h"
 
-#include "timer.h"
+#include "form.h"
 
-void FormTest::on_Menu_clicked()
+void FormTest::on_Update_requested()
 {
     // Arrange
-    Form window;
+    AppModel model;
+    Form widget(&model);
 
     // Act
-    window.show();
-    QTest::mouseClick(window.ui->Menu, Qt::LeftButton);
+    widget.show();
+    // Enter programs mode
+    model.handleEnter();
+    // Enter first program mode
+    model.handleEnter();
+    // Change freqency to two
+    model.handleRight();
 
     // Assert
-    QCOMPARE(window.isHidden(), true);
-}
-
-void FormTest::on_Reduce_clicked()
-{
-    // Arrange
-    Form window;
-
-    // Act
-    window.show();
-    QTest::mouseClick(window.ui->Reduce, Qt::LeftButton);
-
-    // Assert
-    QCOMPARE(window.ui->Level->text().toInt(), -1);
-}
-
-void FormTest::on_Add_clicked()
-{
-    // Arrange
-    Form window;
-
-    // Act
-    window.show();
-    QTest::mouseClick(window.ui->Add, Qt::LeftButton);
-
-    // Assert
-    QCOMPARE(window.ui->Level->text().toInt(), 1);
-}
-
-void FormTest::on_Enter_clicked()
-{
-    // Arrange
-    Form window;
-
-    // Act
-    window.show();
-    QTest::mouseClick(window.ui->Enter, Qt::LeftButton);
-
-    auto form = window.findChildren<Timer*>();
-
-    // Assert
-    QCOMPARE(form.isEmpty(), false);
-    QCOMPARE(form.at(0)->objectName(), "Timer");
+    QCOMPARE(widget.ui->Level->text(), "2");
 }

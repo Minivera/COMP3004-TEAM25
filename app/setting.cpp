@@ -9,11 +9,11 @@
 #include <stdio.h>
 
 Setting::Setting(QWidget *parent) :
-    QDialog(parent),
+    QWidget(parent),
     ui(new Ui::Setting)
 {
     ui->setupUi(this);
-     //Set page name
+    //Set page name
     this->setWindowTitle("Setting Form");
 
 }
@@ -26,11 +26,13 @@ Setting::~Setting()
 
 void Setting::on_Back_clicked()
 {
+    //Back to menu
     this->hide();
 }
 
 void Setting::on_Reduce_clicked()
 {
+    //Get power level number and reduce  once click button
     const int R = ui->Volice->text().toInt();
     ui->Volice->setText(QString::number(R-1));
 }
@@ -38,6 +40,7 @@ void Setting::on_Reduce_clicked()
 
 void Setting::on_Add_clicked()
 {
+    //Get power level number and increase once click button
     const int R = ui->Volice->text().toInt();
     ui->Volice->setText(QString::number(R+1));
 }

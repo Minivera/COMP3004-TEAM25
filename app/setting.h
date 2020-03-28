@@ -1,13 +1,13 @@
 #ifndef SETTING_H
 #define SETTING_H
 
-#include <QDialog>
+#include <QWidget>
 
 namespace Ui {
 class Setting;
 }
 
-class Setting : public QDialog
+class Setting : public QWidget
 {
     Q_OBJECT
 
@@ -21,7 +21,7 @@ private:
     Ui::Setting *ui;
 
 private slots:
-    //Five private slots in setting
+     // Slots for the different buttons.
     void on_Back_clicked();
     void on_Reduce_clicked();
     void on_Add_clicked();

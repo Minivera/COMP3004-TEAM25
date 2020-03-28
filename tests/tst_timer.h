@@ -11,7 +11,7 @@ class TimerTest: public QObject
     Q_OBJECT
 
 private slots:
-    void A();
+    void on_Update_requested();
 };
 
 #endif // TST_TIMER_H

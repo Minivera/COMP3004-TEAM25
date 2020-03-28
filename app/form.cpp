@@ -9,13 +9,14 @@
 #define printf qDebug
 #include <stdio.h>
 
-Form::Form(QWidget *parent) :
-    QDialog(parent),
+Form::Form(AppModel* model, QWidget *parent) :
+    QWidget(parent),
     ui(new Ui::Form)
 {
+    this->model = model;
+
     ui->setupUi(this);
-    //Set page name
-    this->setWindowTitle("Level Form");
+    QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(on_Update_requested()));
 }
 
 Form::~Form()
@@ -23,31 +24,10 @@ Form::~Form()
     delete ui;
 }
 
-
-void Form::on_Menu_clicked()
-{
-    //close page
-    this->hide();
+void Form::update() {
+    ui->Level->setText(QString::number(model->getFrequency()));
 }
 
-void Form::on_Reduce_clicked()
-{
-    //get number and reduce it once click button
-    const int R = ui->Level->text().toInt();
-    ui->Level->setText(QString::number(R-1));
+void Form::on_Update_requested() {
+    update();
 }
-
-void Form::on_Add_clicked()
-{
-    //get number and increase it once click button
-    const int R = ui->Level->text().toInt();
-    ui->Level->setText(QString::number(R+1));
-}
-
-void Form::on_Enter_clicked()
-{
-    //go to timer page
-    timer = new Timer(this);
-    timer->show();
-}
-

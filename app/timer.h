@@ -1,30 +1,34 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-#include <QDialog>
+#include <QWidget>
+
+#include "appmodel.h"
 
 namespace Ui {
 class Timer;
 }
 
-class Timer : public QDialog
+class Timer : public QWidget
 {
     Q_OBJECT
 
     friend class TimerTest;
 
 public:
-    explicit Timer(QWidget *parent = nullptr);
+    explicit Timer(AppModel* model, QWidget *parent = nullptr);
     ~Timer();
 
 private slots:
-    //One private slots in setting
-    void A();
+    // Slot to connect to the model udpate message
+    void on_Update_requested();
 
 private:
-    //One private value in mainwindow
     Ui::Timer *ui;
-    QTimer *timer200;
+    //transfer model data
+    AppModel* model;
+
+    void update();
 };
 
 
