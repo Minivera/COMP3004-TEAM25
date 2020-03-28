@@ -19,10 +19,11 @@ AppModel::~AppModel() {
 
 void AppModel::powerOn() {
     on = true;
+    selectedMenu = currentMenu::MainMenu;
     batteryTimer->start(1000);
 
     QStringList list;
-    list << "PROGRAMS" << "SETTINGS";
+    list << "PROGRAMS" << "FREQUENCIES" << "SETTINGS";
     menuModel->setStringList(list);
 
     emit valueChanged();
@@ -31,6 +32,7 @@ void AppModel::powerOn() {
 void AppModel::powerOff() {
     on = false;
     batteryTimer->stop();
+    treatmentTimer->stop();
 
     QStringList list;
     menuModel->setStringList(list);
@@ -39,14 +41,14 @@ void AppModel::powerOff() {
 }
 
 void AppModel::handleBack() {
-    if (selectedMenu == currentMenu::Settings || selectedMenu == currentMenu::ProgramsMenu) {
+    if (selectedMenu == currentMenu::Settings || selectedMenu == currentMenu::ProgramsMenu || selectedMenu == currentMenu::FrequenciesMenu) {
         selectedMenu = currentMenu::MainMenu;
         selectedItem = 0;
 
         QStringList list;
-        list << "PROGRAMS" << "SETTINGS";
+        list << "PROGRAMS" << "FREQUENCIES" << "SETTINGS";
         menuModel->setStringList(list);
-    } else if (selectedMenu == currentMenu::Form) {
+    } else if (selectedMenu == currentMenu::FormPrograms) {
         selectedMenu = currentMenu::ProgramsMenu;
         selectedItem = 0;
         frequency = 0;
@@ -54,16 +56,44 @@ void AppModel::handleBack() {
         QStringList list;
         list << "ALLERGY" << "PAIN" << "INT. PAIN";
         menuModel->setStringList(list);
-    } else if (selectedMenu == currentMenu::Timer) {
-        selectedMenu = currentMenu::Form;
+    } else if (selectedMenu == currentMenu::FormFrequencies) {
+        selectedMenu = currentMenu::FrequenciesMenu;
+        selectedItem = 0;
+        frequency = 0;
+
+        QStringList list;
+        list << "10Hz" << "20Hz" << "60Hz";
+        menuModel->setStringList(list);
+    } else if (selectedMenu == currentMenu::TimerPrograms) {
+        selectedMenu = currentMenu::FormPrograms;
         treatmentTimer->stop();
+        treatmentLeft = 100;
+    } else if (selectedMenu == currentMenu::TimerFrequencies) {
+        selectedMenu = currentMenu::FormFrequencies;
+        treatmentTimer->stop();
+        treatmentLeft = 100;
     }
 
     emit valueChanged();
 }
 
+void AppModel::handleMenu() {
+    selectedMenu = currentMenu::MainMenu;
+    selectedItem = 0;
+    frequency = 0;
+    treatmentLeft = 100;
+
+    treatmentTimer->stop();
+
+    QStringList list;
+    list << "PROGRAMS" << "FREQUENCIES" << "SETTINGS";
+    menuModel->setStringList(list);
+
+    emit valueChanged();
+}
+
 void AppModel::handleLeft() {
-    if (selectedMenu == currentMenu::Form) {
+    if (selectedMenu == currentMenu::FormPrograms || selectedMenu == currentMenu::FormFrequencies) {
         frequency -= 1;
     }
 
@@ -71,7 +101,7 @@ void AppModel::handleLeft() {
 }
 
 void AppModel::handleRight() {
-    if (selectedMenu == currentMenu::Form) {
+    if (selectedMenu == currentMenu::FormPrograms || selectedMenu == currentMenu::FormFrequencies) {
         frequency += 1;
     }
 
@@ -104,14 +134,30 @@ void AppModel::handleEnter() {
                 break;
             }
             case 1: {
+                selectedMenu = currentMenu::FrequenciesMenu;
+                selectedItem = 0;
+
+                QStringList list;
+                list << "10Hz" << "20Hz" << "60Hz";
+                menuModel->setStringList(list);
+
+                break;
+            }
+            case 2: {
                 selectedMenu = currentMenu::Settings;
                 break;
             }
         }
     } else if (selectedMenu == currentMenu::ProgramsMenu) {
-        selectedMenu = currentMenu::Form;
-    } else if (selectedMenu == currentMenu::Form) {
-        selectedMenu = currentMenu::Timer;
+        selectedMenu = currentMenu::FormPrograms;
+    } else if (selectedMenu == currentMenu::FrequenciesMenu) {
+        selectedMenu = currentMenu::FormFrequencies;
+    } else if (selectedMenu == currentMenu::FormPrograms) {
+        selectedMenu = currentMenu::TimerPrograms;
+        treatmentLeft = 100;
+        treatmentTimer->start(100);
+    } else if (selectedMenu == currentMenu::FormFrequencies) {
+        selectedMenu = currentMenu::TimerFrequencies;
         treatmentLeft = 100;
         treatmentTimer->start(100);
     }

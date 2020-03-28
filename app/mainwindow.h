@@ -25,12 +25,12 @@ public:
     ~MainWindow();
 
 private slots:
-    // On and back buttons
+    // Slot for the power button.
     void on_onButton_clicked();
-    void on_backButton_clicked();
 
-    // Slot to connect to the model udpate message
-    void on_Update_requested();
+    // Slots for the back and menu buttons.
+    void on_backButton_clicked();
+    void on_menuButton_clicked();
 
     // Slots for the direction buttons.
     void on_upButton_clicked();
@@ -40,6 +40,9 @@ private slots:
 
     // Slot for the enter button
     void on_enterButton_clicked();
+
+    // Slot to connect to the model udpate message
+    void on_Update_requested();
 
 private:
     Ui::MainWindow *ui;

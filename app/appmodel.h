@@ -6,7 +6,7 @@
 #include <QModelIndex>
 #include <QTimer>
 
-enum class currentMenu { MainMenu, ProgramsMenu, Settings, Form, Timer };
+enum class currentMenu { MainMenu, ProgramsMenu, FrequenciesMenu, Settings, FormPrograms, FormFrequencies, TimerPrograms, TimerFrequencies };
 
 class AppModel : public QObject
 {
@@ -21,6 +21,7 @@ public:
 
     // Methods that control the act of going back in menus.
     void handleBack();
+    void handleMenu();
 
     // Handles the result of the directional pad
     void handleLeft();
