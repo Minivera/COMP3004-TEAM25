@@ -12,6 +12,7 @@ Timer::Timer(AppModel* model, QWidget *parent) :
     this->model = model;
 
     ui->setupUi(this);
+
     //connect
     QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(on_Update_requested()));
 

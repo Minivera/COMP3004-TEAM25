@@ -25,11 +25,13 @@ MainWindow::MainWindow(AppModel* model, QWidget *parent) :
     form->hide();
     timer = new Timer(model, this);
     timer->hide();
+ readme-and-comment-work
     //Set background color
     pal.setColor(QPalette::Background, Qt::white);
     setAutoFillBackground(true);
     setPalette(pal);
     setMouseTracking(true);
+ readme-and-comment-work
     //hide battery level
     ui->battery->hide();
 }
@@ -92,6 +94,7 @@ void MainWindow::on_onButton_clicked()
 
 void MainWindow::on_backButton_clicked()
 {
+
     //Set back button to back to menu
     model->handleBack();
 }
@@ -102,30 +105,40 @@ void MainWindow::on_Update_requested() {
 
 void MainWindow::on_upButton_clicked()
 {
+
      //set up direction
+
     model->handleTop();
 }
 
 void MainWindow::on_bottomButton_clicked()
 {
+
      //set down direction
+
     model->handleBottom();
 }
 
 void MainWindow::on_enterButton_clicked()
 {
+
     //Set enter button to go to power level page
+
     model->handleEnter();
 }
 
 void MainWindow::on_leftButton_clicked()
 {
+
      //set left direction
+
     model->handleLeft();
 }
 
 void MainWindow::on_rightButton_clicked()
 {
+
     //set right direction
+
     model->handleRight();
 }
