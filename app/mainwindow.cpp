@@ -19,17 +19,20 @@ MainWindow::MainWindow(AppModel* model, QWidget *parent) :
     //Set page name
     this->setWindowTitle("DENAS PRODUCT");
 
+    // Create all the sub widgets and link to this window.
     set = new Setting(this);
     set->hide();
     form = new Form(model, this);
     form->hide();
     timer = new Timer(model, this);
     timer->hide();
+
     //Set background color
     pal.setColor(QPalette::Background, Qt::white);
     setAutoFillBackground(true);
     setPalette(pal);
     setMouseTracking(true);
+
     //hide battery level
     ui->battery->hide();
 }
@@ -44,13 +47,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::update() {
     ui->battery->setText(QString::number(model->getBatteryTime()));
-    if (model->isOn()) {
+    // If the device has been booted up and everything is still hidden
+    if (model->isOn() && ui->battery->isHidden()) {
+        // Show everything only this time to prevent loss of focus.
         set->hide();
         form->hide();
         timer->hide();
         ui->mainView->show();
         ui->battery->show();
-    } else {
+    } else if (!model->isOn() && !ui->battery->isHidden()) {
+        // Otherwise, hide everything only once as well.
         ui->battery->hide();
         set->hide();
         form->hide();
@@ -59,22 +65,27 @@ void MainWindow::update() {
         return;
     }
 
-    if (model->getSelectedMenu() == currentMenu::Settings) {
+    // Check which menu we are at and if we should change the displays. Only display things once when the menu changes.
+    currentMenu selectedMenu = model->getSelectedMenu();
+    if (selectedMenu == currentMenu::Settings && set->isHidden()) {
         set->show();
         form->hide();
         timer->hide();
         ui->mainView->hide();
-    } else if (model->getSelectedMenu() == currentMenu::Form) {
+    } else if ((selectedMenu == currentMenu::FormPrograms || selectedMenu == currentMenu::FormFrequencies)
+               && form->isHidden()) {
         set->hide();
         form->show();
         timer->hide();
         ui->mainView->hide();
-    } else if (model->getSelectedMenu() == currentMenu::Timer) {
+    } else if ((selectedMenu == currentMenu::TimerPrograms || selectedMenu == currentMenu::TimerFrequencies)
+               && timer->isHidden()) {
         set->hide();
         form->hide();
         timer->show();
         ui->mainView->hide();
-    } else {
+    } else if ((selectedMenu == currentMenu::MainMenu || selectedMenu == currentMenu::ProgramsMenu || selectedMenu == currentMenu::FrequenciesMenu)
+               && ui->mainView->isHidden()) {
         set->hide();
         form->hide();
         timer->hide();
@@ -96,8 +107,10 @@ void MainWindow::on_backButton_clicked()
     model->handleBack();
 }
 
-void MainWindow::on_Update_requested() {
-    update();
+void MainWindow::on_menuButton_clicked()
+{
+    // Menu button bring back the main menu and resets everything
+    model->handleMenu();
 }
 
 void MainWindow::on_upButton_clicked()
@@ -128,4 +141,8 @@ void MainWindow::on_rightButton_clicked()
 {
     //set right direction
     model->handleRight();
+}
+
+void MainWindow::on_Update_requested() {
+    update();
 }
