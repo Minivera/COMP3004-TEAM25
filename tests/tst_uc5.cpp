@@ -1,11 +1,11 @@
-#include "tst_uc4.h"
+#include "tst_uc5.h"
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "ui_timer.h"
 #include "appmodel.h"
 
-void UC4Test::testUC4() {
+void UC5Test::testUC5() {
     // Arrange
     AppModel model;
     MainWindow window(&model);
@@ -27,17 +27,21 @@ void UC4Test::testUC4() {
 
     // Run the actual case set by step
     // Step 1
+    QTest::mouseClick(window.ui->bottomButton, Qt::LeftButton);
+
+    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "FREQUENCIES");
+
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
 
     // Verify the result
     QCOMPARE(window.ui->mainView->isVisible(), true);
 
     listViewModel = window.ui->mainView->model();
-    QCOMPARE(listViewModel->index(0, 0).data(Qt::DisplayRole).toString(), "ALLERGY");
-    QCOMPARE(listViewModel->index(1, 0).data(Qt::DisplayRole).toString(), "PAIN");
-    QCOMPARE(listViewModel->index(2, 0).data(Qt::DisplayRole).toString(), "INT. PAIN");
+    QCOMPARE(listViewModel->index(0, 0).data(Qt::DisplayRole).toString(), "10Hz");
+    QCOMPARE(listViewModel->index(1, 0).data(Qt::DisplayRole).toString(), "20Hz");
+    QCOMPARE(listViewModel->index(2, 0).data(Qt::DisplayRole).toString(), "60Hz");
 
-    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "ALLERGY");
+    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "10Hz");
 
     // Step 2
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
@@ -69,7 +73,7 @@ void UC4Test::testUC4() {
     QCOMPARE(window.timer->ui->successLabel->isVisible(), true);
 }
 
-void UC4Test::testUC4Extend2a() {
+void UC5Test::testUC5Extend2a() {
     // Arrange
     AppModel model;
     MainWindow window(&model);
@@ -78,15 +82,19 @@ void UC4Test::testUC4Extend2a() {
     model.powerOn();
 
     // Prepare the extend step
+    QTest::mouseClick(window.ui->bottomButton, Qt::LeftButton);
+
+    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "FREQUENCIES");
+
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
 
     // Verify we're in the right step
     auto listViewModel = window.ui->mainView->model();
-    QCOMPARE(listViewModel->index(0, 0).data(Qt::DisplayRole).toString(), "ALLERGY");
-    QCOMPARE(listViewModel->index(1, 0).data(Qt::DisplayRole).toString(), "PAIN");
-    QCOMPARE(listViewModel->index(2, 0).data(Qt::DisplayRole).toString(), "INT. PAIN");
+    QCOMPARE(listViewModel->index(0, 0).data(Qt::DisplayRole).toString(), "10Hz");
+    QCOMPARE(listViewModel->index(1, 0).data(Qt::DisplayRole).toString(), "20Hz");
+    QCOMPARE(listViewModel->index(2, 0).data(Qt::DisplayRole).toString(), "60Hz");
 
-    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "ALLERGY");
+    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "10Hz");
 
     // Act
     QTest::mouseClick(window.ui->backButton, Qt::LeftButton);
@@ -102,7 +110,7 @@ void UC4Test::testUC4Extend2a() {
     QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "PROGRAMS");
 }
 
-void UC4Test::testUC4Extend3a() {
+void UC5Test::testUC5Extend3a() {
     // Arrange
     AppModel model;
     MainWindow window(&model);
@@ -111,6 +119,10 @@ void UC4Test::testUC4Extend3a() {
     model.powerOn();
 
     // Prepare the extend step
+    QTest::mouseClick(window.ui->bottomButton, Qt::LeftButton);
+
+    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "FREQUENCIES");
+
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
 
@@ -125,14 +137,14 @@ void UC4Test::testUC4Extend3a() {
     QCOMPARE(window.ui->mainView->isVisible(), true);
 
     auto listViewModel = window.ui->mainView->model();
-    QCOMPARE(listViewModel->index(0, 0).data(Qt::DisplayRole).toString(), "ALLERGY"); // We went back
-    QCOMPARE(listViewModel->index(1, 0).data(Qt::DisplayRole).toString(), "PAIN");
-    QCOMPARE(listViewModel->index(2, 0).data(Qt::DisplayRole).toString(), "INT. PAIN");
+    QCOMPARE(listViewModel->index(0, 0).data(Qt::DisplayRole).toString(), "10Hz"); // We went back
+    QCOMPARE(listViewModel->index(1, 0).data(Qt::DisplayRole).toString(), "20Hz");
+    QCOMPARE(listViewModel->index(2, 0).data(Qt::DisplayRole).toString(), "60Hz");
 
-    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "ALLERGY");
+    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "10Hz");
 }
 
-void UC4Test::testUC4Extend4a() {
+void UC5Test::testUC5Extend4a() {
     // Arrange
     AppModel model;
     MainWindow window(&model);
@@ -141,6 +153,10 @@ void UC4Test::testUC4Extend4a() {
     model.powerOn();
 
     // Prepare the extend step
+    QTest::mouseClick(window.ui->bottomButton, Qt::LeftButton);
+
+    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "FREQUENCIES");
+
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
@@ -159,7 +175,7 @@ void UC4Test::testUC4Extend4a() {
     QCOMPARE(window.timer->isVisible(), false);
 }
 
-void UC4Test::testUC4Extend5a() {
+void UC5Test::testUC5Extend5a() {
 
     // Arrange
     AppModel model;
@@ -169,6 +185,10 @@ void UC4Test::testUC4Extend5a() {
     model.powerOn();
 
     // Prepare the extend step
+    QTest::mouseClick(window.ui->bottomButton, Qt::LeftButton);
+
+    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "FREQUENCIES");
+
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
     QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
@@ -188,5 +208,5 @@ void UC4Test::testUC4Extend5a() {
     QCOMPARE(window.ui->lowBatteryLabel->isVisible(), true); // Low battery level is shown
 }
 
-void UC4Test::testUC4Extend5b() {}
-void UC4Test::testUC4Extend5c() {}
+void UC5Test::testUC5Extend5b() {}
+void UC5Test::testUC5Extend5c() {}

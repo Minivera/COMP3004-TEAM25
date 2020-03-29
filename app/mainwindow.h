@@ -23,6 +23,7 @@ class MainWindow : public QMainWindow
     friend class UC2Test;
     friend class UC3Test;
     friend class UC4Test;
+    friend class UC5Test;
 
 public:
     explicit MainWindow(AppModel* model, QWidget *parent = nullptr);

@@ -49,6 +49,6 @@ void UC3Test::testUC3Extend2a() {
     QTest::mouseClick(window.ui->backButton, Qt::LeftButton);
 
     // Assert
-    QCOMPARE(window.ui->mainView->isVisible(), true);
+    QCOMPARE(window.ui->mainView->isVisible(), true); // We went back
     QCOMPARE(window.set->isVisible(), false);
 }

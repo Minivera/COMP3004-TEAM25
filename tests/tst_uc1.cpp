@@ -55,5 +55,5 @@ void UC1Test::testUC1Extend1a() {
     QCOMPARE(model.isOn(), true); // Is the model saying that the device is on?
 
     // Verify that the UI looks as expected
-    QCOMPARE(window.ui->lowBatteryLabel->isVisible(), true);
+    QCOMPARE(window.ui->lowBatteryLabel->isVisible(), true); // Low battery indicator is shown
 }

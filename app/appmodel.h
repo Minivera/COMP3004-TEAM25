@@ -16,6 +16,7 @@ class AppModel : public QObject
     friend class UC2Test;
     friend class UC3Test;
     friend class UC4Test;
+    friend class UC5Test;
 
 public:
     explicit AppModel(QObject *parent = nullptr);

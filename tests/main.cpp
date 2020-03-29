@@ -10,6 +10,7 @@
 #include "tst_uc2.h"
 #include "tst_uc3.h"
 #include "tst_uc4.h"
+#include "tst_uc5.h"
 
 int main(int argc, char *argv[])
 {
@@ -29,6 +30,7 @@ int main(int argc, char *argv[])
     runTest(new UC2Test);
     runTest(new UC3Test);
     runTest(new UC4Test);
+    runTest(new UC5Test);
 
     return status;
 }
