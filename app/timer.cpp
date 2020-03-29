@@ -24,6 +24,7 @@ Timer::~Timer()
 }
 
 void Timer::update() {
+    ui->successLabel->hide();
     ui->timerScreen->setText(QString::number(model->getTreatmentTime()));
 
     if (model->getTreatmentTime() <= 0) {
