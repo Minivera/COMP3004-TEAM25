@@ -13,7 +13,7 @@ MainWindow::MainWindow(AppModel* model, QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     this->model = model;
-    QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(on_Update_requested()));
+    QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(updateRequested()));
 
     ui->setupUi(this);
     //Set page name
@@ -143,6 +143,6 @@ void MainWindow::on_rightButton_clicked()
     model->handleRight();
 }
 
-void MainWindow::on_Update_requested() {
+void MainWindow::updateRequested() {
     update();
 }

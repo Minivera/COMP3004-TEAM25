@@ -22,7 +22,7 @@ public:
 
 private slots:
     // Slot to connect to the model udpate message
-    void on_Update_requested();
+    void updateRequested();
 
 private:
     Ui::Form *ui;

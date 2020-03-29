@@ -16,7 +16,7 @@ Form::Form(AppModel* model, QWidget *parent) :
     this->model = model;
 
     ui->setupUi(this);
-    QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(on_Update_requested()));
+    QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(updateRequested()));
 }
 
 Form::~Form()
@@ -28,6 +28,6 @@ void Form::update() {
     ui->Level->setText(QString::number(model->getFrequency()));
 }
 
-void Form::on_Update_requested() {
+void Form::updateRequested() {
     update();
 }

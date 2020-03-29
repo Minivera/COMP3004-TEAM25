@@ -42,7 +42,7 @@ private slots:
     void on_enterButton_clicked();
 
     // Slot to connect to the model udpate message
-    void on_Update_requested();
+    void updateRequested();
 
 private:
     Ui::MainWindow *ui;
