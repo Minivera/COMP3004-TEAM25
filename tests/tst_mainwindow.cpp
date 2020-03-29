@@ -1,5 +1,8 @@
 #include "tst_mainwindow.h"
 
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
 void MainWindowTest::on_onButton_clicked() {
     // Arrange
     AppModel model;
@@ -26,6 +29,25 @@ void MainWindowTest::on_backButton_clicked() {
     QCOMPARE(model.getSelectedMenu(), currentMenu::ProgramsMenu);
 
     QTest::mouseClick(window.ui->backButton, Qt::LeftButton);
+
+    // Assert
+    QCOMPARE(model.getSelectedMenu(), currentMenu::MainMenu);
+}
+
+void MainWindowTest::on_menuButton_clicked() {
+    // Arrange
+    AppModel model;
+    MainWindow window(&model);
+
+    // Act
+    window.show();
+    QTest::mouseClick(window.ui->onButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+
+    QCOMPARE(model.getSelectedMenu(), currentMenu::FormPrograms);
+
+    QTest::mouseClick(window.ui->menuButton, Qt::LeftButton);
 
     // Assert
     QCOMPARE(model.getSelectedMenu(), currentMenu::MainMenu);

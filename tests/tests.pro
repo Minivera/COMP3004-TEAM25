@@ -17,7 +17,10 @@ HEADERS += \
     tst_form.h \
     tst_mainwindow.h \
     tst_timer.h \
-    tst_uc1.h
+    tst_uc1.h \
+    tst_uc2.h \
+    tst_uc3.h \
+    tst_uc4.h
 
 SOURCES +=  \
     ../app/appmodel.cpp \
@@ -29,7 +32,10 @@ SOURCES +=  \
     tst_form.cpp \
     tst_mainwindow.cpp \
     tst_timer.cpp \
-    tst_uc1.cpp
+    tst_uc1.cpp \
+    tst_uc2.cpp \
+    tst_uc3.cpp \
+    tst_uc4.cpp
 
 FORMS += \
     ../app/mainwindow.ui \

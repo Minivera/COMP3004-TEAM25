@@ -14,6 +14,7 @@ class Timer : public QWidget
     Q_OBJECT
 
     friend class TimerTest;
+    friend class UC4Test;
 
 public:
     explicit Timer(AppModel* model, QWidget *parent = nullptr);

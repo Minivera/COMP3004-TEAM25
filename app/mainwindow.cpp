@@ -35,6 +35,7 @@ MainWindow::MainWindow(AppModel* model, QWidget *parent) :
 
     //hide battery level
     ui->battery->hide();
+    ui->lowBatteryLabel->hide();
 }
 
 MainWindow::~MainWindow()
@@ -47,67 +48,61 @@ MainWindow::~MainWindow()
 
 void MainWindow::update() {
     ui->battery->setText(QString::number(model->getBatteryTime()));
+
     // If the device has been booted up and everything is still hidden
-    // get battry level number
-    const int R = ui->battery->text().toInt();
-    if (model->isOn() && ui->battery->isHidden()&& R>20) {
+    if (model->isOn() && ui->battery->isHidden()) {
         // Show everything only this time to prevent loss of focus.
         set->hide();
         form->hide();
         timer->hide();
         ui->mainView->show();
         ui->battery->show();
-    } else if (!model->isOn() && !ui->battery->isHidden()&& R>20) {
+    } else if (!model->isOn() && !ui->battery->isHidden()) {
         // Otherwise, hide everything only once as well.
         ui->battery->hide();
         set->hide();
         form->hide();
         timer->hide();
         ui->mainView->hide();
+        ui->lowBatteryLabel->hide();
         return;
     }
 
     // Check which menu we are at and if we should change the displays. Only display things once when the menu changes.
     currentMenu selectedMenu = model->getSelectedMenu();
-    if (selectedMenu == currentMenu::Settings && set->isHidden() && R>20) {
+    if (selectedMenu == currentMenu::Settings && set->isHidden()) {
         set->show();
         form->hide();
         timer->hide();
         ui->mainView->hide();
     } else if ((selectedMenu == currentMenu::FormPrograms || selectedMenu == currentMenu::FormFrequencies)
-               && form->isHidden() && R>20) {
+               && form->isHidden()) {
         set->hide();
         form->show();
         timer->hide();
         ui->mainView->hide();
     } else if ((selectedMenu == currentMenu::TimerPrograms || selectedMenu == currentMenu::TimerFrequencies)
-               && timer->isHidden() && R>20) {
+               && timer->isHidden()) {
         set->hide();
         form->hide();
         timer->show();
         ui->mainView->hide();
     } else if ((selectedMenu == currentMenu::MainMenu || selectedMenu == currentMenu::ProgramsMenu || selectedMenu == currentMenu::FrequenciesMenu)
-               && ui->mainView->isHidden() && R>20) {
+               && ui->mainView->isHidden()) {
         set->hide();
         form->hide();
         timer->hide();
         ui->mainView->show();
-    } else if (R == 20 && R>0){
-        //a message when battery level is 20
-       QMessageBox::information(this, QString::fromLocal8Bit("warning"),QString::fromLocal8Bit("Back to menu"));
-       set->hide();
-       form->hide();
-       timer->hide();
-
-       ui->mainView->show();
-
     }
-    else if (R == 0){
-        //turn off product
 
-        ui->mainView->hide();
-        ui->battery->hide();
+    if (model->getBatteryTime() <= AppModel::lowBatteryThreshold){
+       // A message when battery level is 20
+        ui->lowBatteryLabel->show();
 
+       // If we're currently running a treatment, stop
+       if ((selectedMenu == currentMenu::TimerPrograms || selectedMenu == currentMenu::TimerFrequencies)) {
+            model->handleMenu();
+       }
     }
 
     ui->mainView->setModel(model->getListViewMenuModel());

@@ -1,5 +1,7 @@
 #include "appmodel.h"
 
+const int AppModel::lowBatteryThreshold;
+
 AppModel::AppModel(QObject *parent) : QObject(parent)
 {
     menuModel = new QStringListModel();
@@ -18,6 +20,10 @@ AppModel::~AppModel() {
 }
 
 void AppModel::powerOn() {
+    if (batteryLeft <= 0) {
+        return;
+    }
+
     on = true;
     selectedMenu = currentMenu::MainMenu;
     batteryTimer->start(1000);
@@ -51,7 +57,7 @@ void AppModel::handleBack() {
     } else if (selectedMenu == currentMenu::FormPrograms) {
         selectedMenu = currentMenu::ProgramsMenu;
         selectedItem = 0;
-        frequency = 0;
+        frequency = 1;
 
         QStringList list;
         list << "ALLERGY" << "PAIN" << "INT. PAIN";
@@ -59,7 +65,7 @@ void AppModel::handleBack() {
     } else if (selectedMenu == currentMenu::FormFrequencies) {
         selectedMenu = currentMenu::FrequenciesMenu;
         selectedItem = 0;
-        frequency = 0;
+        frequency = 1;
 
         QStringList list;
         list << "10Hz" << "20Hz" << "60Hz";
@@ -80,7 +86,7 @@ void AppModel::handleBack() {
 void AppModel::handleMenu() {
     selectedMenu = currentMenu::MainMenu;
     selectedItem = 0;
-    frequency = 0;
+    frequency = 1;
     treatmentLeft = 100;
 
     treatmentTimer->stop();
@@ -148,15 +154,15 @@ void AppModel::handleEnter() {
                 break;
             }
         }
-    } else if (selectedMenu == currentMenu::ProgramsMenu) {
+    } else if (selectedMenu == currentMenu::ProgramsMenu && batteryLeft > lowBatteryThreshold) {
         selectedMenu = currentMenu::FormPrograms;
-    } else if (selectedMenu == currentMenu::FrequenciesMenu) {
+    } else if (selectedMenu == currentMenu::FrequenciesMenu && batteryLeft > lowBatteryThreshold) {
         selectedMenu = currentMenu::FormFrequencies;
-    } else if (selectedMenu == currentMenu::FormPrograms) {
+    } else if (selectedMenu == currentMenu::FormPrograms && batteryLeft > lowBatteryThreshold) {
         selectedMenu = currentMenu::TimerPrograms;
         treatmentLeft = 100;
         treatmentTimer->start(100);
-    } else if (selectedMenu == currentMenu::FormFrequencies) {
+    } else if (selectedMenu == currentMenu::FormFrequencies && batteryLeft > lowBatteryThreshold) {
         selectedMenu = currentMenu::TimerFrequencies;
         treatmentLeft = 100;
         treatmentTimer->start(100);
@@ -170,6 +176,7 @@ void AppModel::Timer_changed() {
 
     if (batteryLeft <= 0) {
         batteryTimer->stop();
+        powerOff();
     }
 
     emit valueChanged();
