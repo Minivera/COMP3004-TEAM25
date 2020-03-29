@@ -11,6 +11,13 @@ enum class currentMenu { MainMenu, ProgramsMenu, FrequenciesMenu, Settings, Form
 class AppModel : public QObject
 {
     Q_OBJECT
+
+    friend class UC1Test;
+    friend class UC2Test;
+    friend class UC3Test;
+    friend class UC4Test;
+    friend class UC5Test;
+
 public:
     explicit AppModel(QObject *parent = nullptr);
     ~AppModel();
@@ -40,6 +47,8 @@ public:
     inline int getBatteryTime() { return batteryLeft; }
     inline int getFrequency() { return frequency; }
     inline int getTreatmentTime() { return treatmentLeft; }
+
+    static const int lowBatteryThreshold = 20;
 signals:
     void valueChanged();
 

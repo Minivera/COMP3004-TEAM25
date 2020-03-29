@@ -13,7 +13,7 @@ Timer::Timer(AppModel* model, QWidget *parent) :
 
     ui->setupUi(this);
     //connect
-    QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(on_Update_requested()));
+    QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(updateRequested()));
 
     ui->successLabel->hide();
 }
@@ -31,6 +31,6 @@ void Timer::update() {
     }
 }
 
-void Timer::on_Update_requested() {
+void Timer::updateRequested() {
     update();
 }

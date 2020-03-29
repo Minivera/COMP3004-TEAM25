@@ -14,6 +14,8 @@ class Timer : public QWidget
     Q_OBJECT
 
     friend class TimerTest;
+    friend class UC4Test;
+    friend class UC5Test;
 
 public:
     explicit Timer(AppModel* model, QWidget *parent = nullptr);
@@ -21,7 +23,7 @@ public:
 
 private slots:
     // Slot to connect to the model udpate message
-    void on_Update_requested();
+    void updateRequested();
 
 private:
     Ui::Timer *ui;
