@@ -174,6 +174,12 @@ void AppModel::handleEnter() {
 void AppModel::Timer_changed() {
     batteryLeft -= 1;
 
+    if (selectedMenu == currentMenu::TimerPrograms || selectedMenu == currentMenu::TimerFrequencies) {
+        // Remove more of the battery while the programs are running.
+        // For this simulation, we use which program was selected to count how much battery to remove.
+        batteryLeft -= selectedItem;
+    }
+
     if (batteryLeft <= 0) {
         batteryTimer->stop();
         powerOff();
