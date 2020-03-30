@@ -6,20 +6,19 @@
 class electrode : public QObject
 {
     Q_OBJECT
-
 public:
+    static electrode* Instance();
+    bool getState();
+protected:
     electrode();
-    bool getState(); //Returns current value of onSkin
-    void setState(bool state); //Changes value of onSkin
-    ~electrode();
-
+    bool onSkin;
 private:
-    bool onSkin; //Tells whether electrode is pressed to skin or not
+    static electrode* _instance;
 
 signals:
-
+    void stateChanged(bool contact);
 public slots:
-    void changeState(); //handles signal from electrode state button in appmodel
+    void changeState();
 
 };
 

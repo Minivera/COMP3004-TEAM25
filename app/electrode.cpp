@@ -1,22 +1,27 @@
 #include "electrode.h"
 
-electrode::electrode(){
-    onSkin = true;
-}
-electrode::~electrode(){
+electrode* electrode::_instance = nullptr;
+
+electrode::electrode(){}
+
+electrode* electrode::Instance(){
+    if(_instance == nullptr){
+        _instance = new electrode;
+    }
+    _instance->onSkin = true;
+    return _instance;
 }
 bool electrode::getState(){
     return onSkin;
 }
-void electrode::setState(bool state){
-    onSkin = state;
-}
 
 void electrode::changeState(){
     if(onSkin == true){
-        this->setState(false);
+        onSkin = false;
     }
     else{
-        this->setState(true);
+        onSkin = true;
     }
 }
+
+
