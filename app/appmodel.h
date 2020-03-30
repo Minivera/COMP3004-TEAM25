@@ -5,6 +5,7 @@
 #include <QStringListModel>
 #include <QModelIndex>
 #include <QTimer>
+#include "electrode.h"
 
 enum class currentMenu { MainMenu, ProgramsMenu, FrequenciesMenu, Settings, FormPrograms, FormFrequencies, TimerPrograms, TimerFrequencies };
 
@@ -70,6 +71,9 @@ private:
     // The timer for the battery.
     QTimer* batteryTimer;
     int batteryLeft = 100;
+
+    //The electrode of the device
+    electrode* elec;
 
     // Selected frequency for the treatment.
     int frequency = 1;

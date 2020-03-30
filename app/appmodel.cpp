@@ -1,4 +1,5 @@
 #include "appmodel.h"
+#include "electrode.h"
 
 const int AppModel::lowBatteryThreshold;
 
@@ -186,6 +187,9 @@ void AppModel::TreatmentTimer_changed() {
     treatmentLeft -= 1;
 
     if (treatmentLeft <= 0) {
+        treatmentTimer->stop();
+    }
+    if(elec->getState()==false){
         treatmentTimer->stop();
     }
 
