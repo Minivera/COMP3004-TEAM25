@@ -1,8 +1,14 @@
 QT += testlib
 QT += gui
 QT += widgets
-CONFIG += qt warn_on depend_includepath testcaseTEMPLATE = appINCLUDEPATH += \
-    ../appHEADERS += \
+CONFIG += qt warn_on depend_includepath testcase
+
+TEMPLATE = app
+
+INCLUDEPATH += \
+    ../app
+
+HEADERS += \
     ../app/appmodel.h \
     ../app/electrode.h \
     ../app/mainwindow.h \
@@ -16,7 +22,9 @@ CONFIG += qt warn_on depend_includepath testcaseTEMPLATE = appINCLUDEPATH += \
     tst_uc2.h \
     tst_uc3.h \
     tst_uc4.h \
-    tst_uc5.hSOURCES +=  \
+    tst_uc5.h
+
+SOURCES +=  \
     ../app/appmodel.cpp \
     ../app/electrode.cpp \
     ../app/mainwindow.cpp \
@@ -31,7 +39,9 @@ CONFIG += qt warn_on depend_includepath testcaseTEMPLATE = appINCLUDEPATH += \
     tst_uc2.cpp \
     tst_uc3.cpp \
     tst_uc4.cpp \
-    tst_uc5.cppFORMS += \
+    tst_uc5.cpp
+
+FORMS += \
     ../app/mainwindow.ui \
     ../app/form.ui \
     ../app/setting.ui \
