@@ -189,12 +189,13 @@ void AppModel::Timer_changed() {
 }
 
 void AppModel::TreatmentTimer_changed() {
+
+    if(!electrode::Instance()->getState()){
+        return;
+    }
     treatmentLeft -= 1;
 
     if (treatmentLeft <= 0) {
-        treatmentTimer->stop();
-    }
-    if(electrode::Instance()->getState()==false){
         treatmentTimer->stop();
     }
 
