@@ -5,6 +5,7 @@
 #include <QStringListModel>
 #include <QModelIndex>
 #include <QTimer>
+#include "electrode.h"
 
 enum class currentMenu { MainMenu, ProgramsMenu, FrequenciesMenu, Settings, FormPrograms, FormFrequencies, TimerPrograms, TimerFrequencies };
 
@@ -30,6 +31,9 @@ public:
     void handleBack();
     void handleMenu();
 
+    //Handles the electrode on/off button
+    void handleElectrode();
+
     // Handles the result of the directional pad
     void handleLeft();
     void handleRight();
@@ -51,6 +55,7 @@ public:
     static const int lowBatteryThreshold = 20;
 signals:
     void valueChanged();
+    void elecStateChanged(); //sends a signal to the electrode to change the state
 
 private slots:
     void Timer_changed();
@@ -63,7 +68,7 @@ private:
     // The currently selected menu
     currentMenu selectedMenu = currentMenu::MainMenu;
 
-    // The model for the list view which pwoers the menu
+    // The model for the list view which powers the menu
     QStringListModel* menuModel;
     int selectedItem = 0;
 

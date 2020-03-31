@@ -608,6 +608,19 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="electrodeButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>364</y>
+      <width>83</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Electrode</string>
+    </property>
+   </widget>
    <zorder>mainView</zorder>
    <zorder>onButton</zorder>
    <zorder>backButton</zorder>
@@ -619,6 +632,7 @@
    <zorder>battery</zorder>
    <zorder>menuButton</zorder>
    <zorder>lowBatteryLabel</zorder>
+   <zorder>electrodeButton</zorder>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

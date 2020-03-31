@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
         appmodel.cpp \
+        electrode.cpp \
         form.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -34,6 +35,7 @@ SOURCES += \
 
 HEADERS += \
         appmodel.h \
+        electrode.h \
         form.h \
         mainwindow.h \
         setting.h \

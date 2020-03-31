@@ -1,4 +1,5 @@
 #include "appmodel.h"
+#include "electrode.h"
 
 const int AppModel::lowBatteryThreshold;
 
@@ -11,6 +12,7 @@ AppModel::AppModel(QObject *parent) : QObject(parent)
 
     QObject::connect(batteryTimer, SIGNAL(timeout()), this, SLOT(Timer_changed()));
     QObject::connect(treatmentTimer, SIGNAL(timeout()), this, SLOT(TreatmentTimer_changed()));
+    QObject::connect(this, SIGNAL(elecStateChanged()), electrode::Instance(),SLOT(changeState()));
 }
 
 AppModel::~AppModel() {
@@ -81,6 +83,10 @@ void AppModel::handleBack() {
     }
 
     emit valueChanged();
+}
+
+void AppModel::handleElectrode(){
+    emit elecStateChanged();
 }
 
 void AppModel::handleMenu() {
@@ -189,6 +195,10 @@ void AppModel::Timer_changed() {
 }
 
 void AppModel::TreatmentTimer_changed() {
+
+    if(!electrode::Instance()->getState()){
+        return;
+    }
     treatmentLeft -= 1;
 
     if (treatmentLeft <= 0) {

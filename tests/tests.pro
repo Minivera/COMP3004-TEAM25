@@ -10,6 +10,7 @@ INCLUDEPATH += \
 
 HEADERS += \
     ../app/appmodel.h \
+    ../app/electrode.h \
     ../app/mainwindow.h \
     ../app/form.h \
     ../app/setting.h \
@@ -25,6 +26,7 @@ HEADERS += \
 
 SOURCES +=  \
     ../app/appmodel.cpp \
+    ../app/electrode.cpp \
     ../app/mainwindow.cpp \
     ../app/form.cpp \
     ../app/setting.cpp \
