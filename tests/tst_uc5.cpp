@@ -183,6 +183,7 @@ void UC5Test::testUC5Extend5a() {
 
     window.show();
     model.powerOn();
+    electrode::Instance()->changeState();
 
     // Prepare the extend step
     QTest::mouseClick(window.ui->bottomButton, Qt::LeftButton);
@@ -201,12 +202,73 @@ void UC5Test::testUC5Extend5a() {
 
     // Act
     model.batteryLeft = 20;
-    model.TreatmentTimer_changed();
+    model.Timer_changed();
 
     // Assert
     QCOMPARE(window.ui->mainView->isVisible(), true); // Got booted back to the main menu
     QCOMPARE(window.ui->lowBatteryLabel->isVisible(), true); // Low battery level is shown
 }
 
-void UC5Test::testUC5Extend5b() {}
-void UC5Test::testUC5Extend5c() {}
+void UC5Test::testUC5Extend5b() {
+    // Arrange
+    AppModel model;
+    MainWindow window(&model);
+
+    window.show();
+    model.powerOn();
+
+    // Prepare the extend step
+    QTest::mouseClick(window.ui->bottomButton, Qt::LeftButton);
+
+    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "FREQUENCIES");
+
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+
+    // Verify we're in the right step
+    QCOMPARE(window.ui->mainView->isVisible(), false);
+    QCOMPARE(window.form->isVisible(), false);
+    QCOMPARE(window.timer->isVisible(), true);
+    QCOMPARE(model.getTreatmentTime(), 100);
+
+    // Act
+    model.handleElectrode();
+    model.TreatmentTimer_changed();
+
+    // Assert
+    QCOMPARE(model.treatmentLeft, 99); // Treatment has resumed
+}
+
+void UC5Test::testUC5Extend5c() {
+    // Arrange
+    AppModel model;
+    MainWindow window(&model);
+
+    window.show();
+    model.powerOn();
+    electrode::Instance()->changeState();
+
+    // Prepare the extend step
+    QTest::mouseClick(window.ui->bottomButton, Qt::LeftButton);
+
+    QCOMPARE(window.ui->mainView->currentIndex().data(Qt::DisplayRole).toString(), "FREQUENCIES");
+
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+    QTest::mouseClick(window.ui->enterButton, Qt::LeftButton);
+
+    // Verify we're in the right step
+    QCOMPARE(window.ui->mainView->isVisible(), false);
+    QCOMPARE(window.form->isVisible(), false);
+    QCOMPARE(window.timer->isVisible(), true);
+    QCOMPARE(model.getTreatmentTime(), 100);
+
+    // Act
+    model.TreatmentTimer_changed();
+    electrode::Instance()->changeState(); // Disable the electrodes
+    model.TreatmentTimer_changed();
+
+    // Assert
+    QCOMPARE(model.treatmentLeft, 99); // Treatment has not progressed the two step it should have
+}

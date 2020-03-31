@@ -5,6 +5,7 @@ void TimerTest::on_Update_requested()
     // Arrange
     AppModel model;
     Timer widget(&model);
+    electrode::Instance()->changeState();
 
     // Act
     widget.show();
