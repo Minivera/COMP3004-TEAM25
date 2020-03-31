@@ -6,6 +6,8 @@ void TimerTest::on_Update_requested()
     AppModel model;
     Timer widget(&model);
 
+    model.handleElectrode();
+
     // Act
     widget.show();
     // Enter programs mode

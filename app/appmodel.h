@@ -39,8 +39,12 @@ public:
     // Handles the central enter button
     void handleEnter();
 
+    // Handles when the electrode gets applied or removed from the skin.
+    void handleElectrode();
+
     // getters
     inline bool isOn() { return on; }
+    inline bool isElectrodeOn() { return electrodeOn; }
     inline currentMenu getSelectedMenu() { return selectedMenu; }
     inline QStringListModel* getListViewMenuModel() { return menuModel; }
     inline QModelIndex getSelectedItem() { return menuModel->index(selectedItem, 0); }
@@ -59,6 +63,9 @@ private slots:
 private:
     // If the device is on or off.
     bool on = false;
+
+    // If the device has the electrod on skin or not.
+    bool electrodeOn = false;
 
     // The currently selected menu
     currentMenu selectedMenu = currentMenu::MainMenu;

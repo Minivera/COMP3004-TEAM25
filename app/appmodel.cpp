@@ -171,11 +171,17 @@ void AppModel::handleEnter() {
     emit valueChanged();
 }
 
+void AppModel::handleElectrode() {
+    electrodeOn = !electrodeOn;
+
+    emit valueChanged();
+}
+
 void AppModel::Timer_changed() {
     batteryLeft -= 1;
 
-    if (selectedMenu == currentMenu::TimerPrograms || selectedMenu == currentMenu::TimerFrequencies) {
-        // Remove more of the battery while the programs are running.
+    if (electrodeOn && (selectedMenu == currentMenu::TimerPrograms || selectedMenu == currentMenu::TimerFrequencies)) {
+        // Remove more of the battery while the programs are running and the electrodes are on the skin.
         // For this simulation, we use which program was selected to count how much battery to remove.
         batteryLeft -= selectedItem;
     }
@@ -189,6 +195,10 @@ void AppModel::Timer_changed() {
 }
 
 void AppModel::TreatmentTimer_changed() {
+    if (!electrodeOn) {
+        return;
+    }
+
     treatmentLeft -= 1;
 
     if (treatmentLeft <= 0) {

@@ -4,6 +4,7 @@
 Student name: Zhen Zhang, student number: 101002369
 Student name: Guillaume St-Pierre, student number: 101066038
 Student name: Micheal Hamon, student number: 100818377
+Student name: Keegan Gauthier, student number: 100998588
 
 ## How to run
 You can run our project using Qt Creator
@@ -21,6 +22,8 @@ The App sub-project contains our main application for simulating the device. On 
 * Menu button is used to go back to the main menu.
 
 On the main screen, you are given three options. Change which option is selected with the ↑ ↓ buttons and press enter to select. **PROGRAMS** will display the possible treatment programs, once you have selected one, enter the power level with → ← and start the treatment by pressing enter. **FREQUENCIES** will display the available frequencies for a more specific treatment, enter the power level and start the treatment like you would in the **PROGRAMS** menu. **SETTINGS** will display the settings form where you can change some of the settings (Not covered by our simulation).
+
+When a treatment is initiated, the treatment will not start until the electrodes have been connected to the skin. The "Connect Electrodes" button can be used to simulate that action.
 
 ### Tests sub-project
 The test sub-project contains all the units tests for the app project.

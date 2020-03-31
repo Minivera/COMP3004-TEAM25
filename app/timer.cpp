@@ -16,6 +16,7 @@ Timer::Timer(AppModel* model, QWidget *parent) :
     QObject::connect(this->model, SIGNAL(valueChanged()), this, SLOT(updateRequested()));
 
     ui->successLabel->hide();
+    ui->electrodeLabel->hide();
 }
 
 Timer::~Timer()
@@ -29,6 +30,12 @@ void Timer::update() {
 
     if (model->getTreatmentTime() <= 0) {
         ui->successLabel->show();
+    }
+
+    if (model->isElectrodeOn() && ui->electrodeLabel->isVisible()) {
+        ui->electrodeLabel->hide();
+    } else if (!model->isElectrodeOn() && ui->electrodeLabel->isHidden()) {
+        ui->electrodeLabel->show();
     }
 }
 

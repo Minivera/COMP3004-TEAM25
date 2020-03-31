@@ -608,6 +608,19 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="connectButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>350</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Connect electrodes</string>
+    </property>
+   </widget>
    <zorder>mainView</zorder>
    <zorder>onButton</zorder>
    <zorder>backButton</zorder>
@@ -619,6 +632,7 @@
    <zorder>battery</zorder>
    <zorder>menuButton</zorder>
    <zorder>lowBatteryLabel</zorder>
+   <zorder>connectButton</zorder>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

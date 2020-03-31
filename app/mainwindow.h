@@ -46,9 +46,11 @@ private slots:
     // Slot for the enter button
     void on_enterButton_clicked();
 
+    // Slot to handle the button to connect the electrodes to the skin.
+    void on_connectButton_clicked();
+
     // Slot to connect to the model udpate message
     void updateRequested();
-
 private:
     Ui::MainWindow *ui;
     QPalette pal;
