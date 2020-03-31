@@ -7,9 +7,9 @@ electrode::electrode(){}
 electrode* electrode::Instance(){
     if(_instance == nullptr){
         _instance = new electrode;
-        _instance->onSkin = false;
+        _instance->onSkin = false; //initialized electrode state to false
     }
-    return _instance;
+    return _instance; //return single instance of electrode
 }
 bool electrode::getState(){
     return _instance->onSkin;

@@ -11,7 +11,7 @@ public:
     bool getState(); //reveals whether the electrode is pressed to the skin or not
 protected:
     electrode();
-    bool onSkin;
+    bool onSkin; //variable to store electrode state
 private:
     static electrode* _instance;
 
