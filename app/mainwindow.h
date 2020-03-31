@@ -49,6 +49,9 @@ private slots:
     // Slot to connect to the model udpate message
     void updateRequested();
 
+    // Slot to respond to the electrode button
+    void on_electrodeButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QPalette pal;

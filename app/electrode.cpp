@@ -12,15 +12,15 @@ electrode* electrode::Instance(){
     return _instance;
 }
 bool electrode::getState(){
-    return onSkin;
+    return _instance->onSkin;
 }
 
 void electrode::changeState(){
-    if(onSkin == true){
-        onSkin = false;
+    if(_instance->onSkin == true){
+        _instance->onSkin = false;
     }
     else{
-        onSkin = true;
+        _instance->onSkin = true;
     }
 }
 

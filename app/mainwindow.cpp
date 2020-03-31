@@ -159,3 +159,8 @@ void MainWindow::on_rightButton_clicked()
 void MainWindow::updateRequested() {
     update();
 }
+
+void MainWindow::on_electrodeButton_clicked()
+{
+    model->handleElectrode();
+}
