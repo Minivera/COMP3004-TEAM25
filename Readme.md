@@ -4,6 +4,7 @@
 Student name: Zhen Zhang, student number: 101002369
 Student name: Guillaume St-Pierre, student number: 101066038
 Student name: Micheal Hamon, student number: 100818377
+Student name: Keegan Gauthier, student number: 100998588
 
 ## How to run
 You can run our project using Qt Creator
